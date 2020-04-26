@@ -1,0 +1,23 @@
+        //==================================================================
+        // Java Dragon
+        System.out.print("\033[H\033[2J");
+        System.out.println("Grrrrr!");
+        System.out.println(" _______________________________________ ");
+        System.out.println("|<>=======()                            |");
+        System.out.println("|(/\\___   /|\\\\          ()==========<>_ |");
+        System.out.println("|      \\_/ | \\\\        //|\\   ______/ \\)|");
+        System.out.println("|        \\_|  \\\\      // | \\_/          |"); 
+        System.out.println("|          \\|\\/|\\_   //  /\\/            |"); 
+        System.out.println("|           (oo)\\ \\_//  /               |");
+        System.out.println("|          //_/\\_\\/ /  |                |");
+        System.out.println("|         @@/  |=\\  \\  |                |");
+        System.out.println("|              \\_=\\_ \\ |                |");
+        System.out.println("|                \\==\\ \\|\\_              |");
+        System.out.println("|             __(\\===\\(  )\\             |");
+        System.out.println("|            (((~) __(_/   |            |");
+        System.out.println("|                 (((~) \\  /            |");
+        System.out.println("|                 ______/ /             |");
+        System.out.println("|                 '------'              |");
+        System.out.println("|_______________________________________|");
+        System.out.println("\n");
+        //==================================================================
