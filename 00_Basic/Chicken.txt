@@ -1,6 +1,7 @@
         //==========================================
         // Java Chicken
         System.out.print("\033[H\033[2J");
+        System.out.print("Cluck!");
         System.out.println(" ____________________ ");
         System.out.println("|                    |");
         System.out.println("|     /'._     _,    |");  
