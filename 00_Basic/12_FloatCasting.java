@@ -26,7 +26,12 @@ class FloatCasting {
         System.out.println("Byte\t-> Float\t: " + (float)(myByteValue));
         System.out.println("Short\t-> Float\t: " + (float)(myShortValue));
         System.out.println("Int\t-> Float\t: " + (float)(myIntValue));
-        System.out.println("Long\t-> Float\t: " + (float)(myLongValue));
+        System.out.println("Long\t-> Float\t: " + (float)(myLongValue) + "\n");
+
+        System.out.println("I can also cast numbers.");
+        System.out.println("(float)2\t: " + (float)2);
+        System.out.println("(float)10\t: " + (float)10);
+        System.out.println("(float)3.14\t: " + (float)3.14 + "\n");
         }
         
 
