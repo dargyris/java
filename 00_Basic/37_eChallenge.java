@@ -19,15 +19,21 @@ class eChallenge{
 
         int hours = ( int )minutes / 60;
         minutes -= hours * 60;
-        if( hours < 10 && minutes < 10 && seconds < 10 ){
-            return "0" + hours + "h 0" + minutes + "m 0" + seconds + "s";
-        } else if ( hours < 10 && minutes < 10 ){
-            return "0" + hours + "h 0" + minutes + "m " + seconds + "s";
-        } else if( hours < 10 ){
-            return "0" + hours + "h " + minutes + "m " + seconds + "s";
-        } else {
-            return hours + "h " + minutes + "m " + seconds + "s";
+
+        String strHours = hours + "h ";
+        if( hours < 10 ){
+            strHours = "0" + strHours;
         }
+        String strMinutes = minutes + "m ";
+        if( minutes < 10 ){
+            strMinutes = "0" + strMinutes;
+        }
+        String strSeconds = seconds + "s";
+        if ( seconds < 10 ){
+            strSeconds = "0" + strSeconds;
+        }
+        
+        return strHours + strMinutes + strSeconds;
 
     }
 
