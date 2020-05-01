@@ -7,13 +7,13 @@ class gChallenge{
 
         System.out.print("\033[H\033[2J");
         
-//        System.out.println( "For sum: " + forMethod() );
-//        System.out.println( "****************************" );
+        System.out.println( "For sum: " + forMethod() );
+        System.out.println( "****************************" );
 
         System.out.println( "While sum: " + whileMethod() );
         System.out.println( "****************************\n" );
 
-    }
+    } // End of Main{}
 
     private static int forMethod(){
 
@@ -43,7 +43,7 @@ class gChallenge{
             return sum;
         }
         return -1;
-    }
+    } // End of forMethod{}
 
     private static int whileMethod(){
 
@@ -75,6 +75,6 @@ class gChallenge{
             return sum;
         }
         return -1;
-    }
+    } // End of whileMethod{}
 
 }
