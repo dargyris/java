@@ -1,42 +1,41 @@
 class Main{
 
     public static void main ( String[] args ){
+        
+        Account firstAccount = new Account();
 
-        System.out.print("\033[H\033[2J");
-        int choice = Menu.menu();
-        switch ( choice ){          
-            case 0:                    
-                System.out.print("\033[H\033[2J"); 
-                Decorator.decorator();
-                System.out.println( "Thank you for using our services!" );
-                System.out.println( "Have a nice day!\n" );
-                break; 
-            case 1: 
-                System.out.print("\033[H\033[2J"); 
-                Decorator.decorator();
-                System.out.println( "New Account:\n" ); 
-                break; 
-            case 2: 
-                System.out.print("\033[H\033[2J"); 
-                Decorator.decorator();
-                System.out.println( "Deposit Funds:\n" ); 
-                break; 
-            case 3: 
-                System.out.print("\033[H\033[2J"); 
-                Decorator.decorator();
-                System.out.println( "Withdraw Funds:\n" ); 
-                break; 
-            case 4: 
-                System.out.print("\033[H\033[2J"); 
-                Decorator.decorator();
-                System.out.println( "Printing Status:\n" ); 
-                break; 
-            default: 
-                System.out.print("\033[H\033[2J"); 
-                Decorator.decorator();
-                System.out.println( "Max number of tries reached." );
-                System.out.println( "Please try again later.\n" );
-                break; 
+        boolean flag = true;
+        while ( flag ) {
+            int choice = Menu.menu();
+            switch ( choice ){          
+                case 0:                    
+                    Decorator.decorator();
+                    System.out.println( "\n\tThank you for using our services!" );
+                    System.out.println( "\tHave a nice day!\n" );
+                    flag = false;
+                    break;
+                case 1: 
+                    firstAccount = AccountCreator.accountCreator( firstAccount );
+                    InitMsg.initMsg( firstAccount );
+                    Interact.interact();
+                    break; 
+                case 2: 
+                    Deposit.deposit( firstAccount );
+                    break; 
+                case 3: 
+                    Withdraw.withdraw( firstAccount );
+                    break; 
+                case 4: 
+                    AccountStatus.accountStatus( firstAccount );
+                    Interact.interact();
+                    break; 
+                default: 
+                    Decorator.decorator();
+                    System.out.println( "Max number of tries reached." );
+                    System.out.println( "Please try again later.\n" );
+                    flag = false;
+                    break; 
+            }
         } 
     }
 
