@@ -1,5 +1,6 @@
 public class Decorator {
     public static void decorator () {
+        System.out.print("\033[H\033[2J");
         System.out.println("=======================================================");
         System.out.println("||              THE BANK OF THE BANKS                ||");
         System.out.println("|| _______________ ________________ ________________ ||");
