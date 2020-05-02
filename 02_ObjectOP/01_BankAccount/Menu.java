@@ -2,32 +2,29 @@ class Menu{
 
     public static int menu(){
 
-        int threeTries = 0;
+        int threeTries = 3;
         int intChoice = -1;
 
-        while( threeTries < 3 ) {
+        while( threeTries > 0 ) {
             
             System.out.print("\033[H\033[2J");
             switch ( threeTries ){
-                case 0:
+                case 3:
                     Decorator.decorator();
                     ListChoices.listChoices();
-                    Prompt.prompt( threeTries );
-                    intChoice = GetInput.getInput();
-                    break;
-                case 1:
-                    Decorator.decorator();
-                    ListChoices.listChoices();
-                    Prompt.prompt( threeTries );
-                    intChoice = GetInput.getInput();
+                    intChoice = Prompt.prompt( threeTries );
                     break;
                 case 2:
                     Decorator.decorator();
                     ListChoices.listChoices();
-                    Prompt.prompt( threeTries );
-                    intChoice = GetInput.getInput();
+                    intChoice = Prompt.prompt( threeTries );
                     break;
-                case 3:
+                case 1:
+                    Decorator.decorator();
+                    ListChoices.listChoices();
+                    intChoice = Prompt.prompt( threeTries ); 
+                    break;
+                case 0:
                     Decorator.decorator();
                     Prompt.prompt( threeTries );
                     break;
@@ -36,7 +33,7 @@ class Menu{
             if ( intChoice != -1 ){
                 break;
             }
-            threeTries ++;
+            threeTries --;
                 
         }
 
