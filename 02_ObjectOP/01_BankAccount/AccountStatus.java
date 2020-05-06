@@ -21,6 +21,8 @@ class AccountStatus{
             System.out.println( "\t====================================" );
         }
 
+        Interact.interact();
+
     }
 
 }
