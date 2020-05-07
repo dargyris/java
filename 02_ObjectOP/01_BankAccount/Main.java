@@ -6,6 +6,10 @@ class Main{
 
         boolean flag = true;
         while ( flag ) {
+            int status = 0;
+            // Stores return values of each function to check 
+            // if everything went well.
+
             int choice = Menu.menu();
             switch ( choice ){          
                 case 0:                    
@@ -17,22 +21,23 @@ class Main{
                 case 1: 
                     firstAccount = AccountCreator.accountCreator( firstAccount );
                     InitMsg.initMsg( firstAccount );
-                    Interact.interact();
                     break; 
                 case 2: 
-                    Deposit.deposit( firstAccount );
+                    status = Deposit.deposit( firstAccount );
                     break; 
                 case 3: 
-                    Withdraw.withdraw( firstAccount );
+                    status = Withdraw.withdraw( firstAccount );
                     break; 
                 case 4: 
                     AccountStatus.accountStatus( firstAccount );
-                    Interact.interact();
                     break; 
                 default: 
                     Decorator.decorator();
-                    System.out.println( "Max number of tries reached." );
-                    System.out.println( "Please try again later.\n" );
+                    System.out.println( "\t------------------------------------" );
+                    System.out.println( "\tMax number of tries reached." );
+                    System.out.println( "\tPlease try again later.\n" );
+                    System.out.println( "\t====================================" );
+                    System.out.println( "\tGoodbye!\n\n" );
                     flag = false;
                     break; 
             }
