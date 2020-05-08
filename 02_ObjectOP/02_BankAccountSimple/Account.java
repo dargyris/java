@@ -9,11 +9,12 @@ public class Account {
     private String customerEmail;
     private String customerPhone;
 
-    public Account (  ){
+    public Account (){
+        this("5678", 2.50, "Default name", "Default addreess", "Default phone");
         System.out.println( "Empty constructor called." );
     }
 
-    public Account ( String nuber, 
+    public Account ( String number, 
                      double balance, 
                      String customerName, 
                      String customerEmail,
@@ -29,19 +30,19 @@ public class Account {
 
     public void deposit ( double depositAmount ){
         this.balance += depositAmount;
-        System.out.println( "Deposit of " + depositAmount + " made." );
-        System.out.println( "New balance is " + this.balance );
+        System.out.print( "\nDeposit of " + depositAmount + " made." );
+        System.out.print( " New balance is " + this.balance );
     }
 
     public void withdrawal ( double withdrawalAmount ){
         if ( this.balance - withdrawalAmount < 0 ){
-            System.out.println( "Only " + this.balance + " available." );
-            System.out.println( "Withdrawal not processed." );
+            System.out.print( "\nOnly " + this.balance + " available." );
+            System.out.print( " Withdrawal not processed." );
         } else  {
             this.balance -= withdrawalAmount;
-            System.out.println( "Withdrawal of " + withdrawalAmount 
+            System.out.print( "\nWithdrawal of " + withdrawalAmount 
                     + " processed." );
-            System.out.println( "Remaining balance = " + this.balance );
+            System.out.print( " Remaining balance = " + this.balance );
         }
     }
 
