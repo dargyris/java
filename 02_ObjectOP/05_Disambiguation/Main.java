@@ -31,6 +31,15 @@ public class Main {
         System.out.println( blueHouseRef.getItsColor() );
         System.out.println( greenHouse.getItsColor() );
         System.out.println( anotherHouseRef.getItsColor() );
+
+// ===============================================
+// This is a class with no variables, no setters
+// and no getters. It only houses two functions
+// that print a message (relevant) on the screen.
+
+        ThisSuper object = new ThisSuper();
+        object.whatSuperDoes();
+        object.whatThisDoes();
     }
 
 }
