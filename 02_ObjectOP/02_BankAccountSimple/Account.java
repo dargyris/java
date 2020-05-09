@@ -28,6 +28,30 @@ public class Account {
         this.customerPhone = customerPhone;
     }
 
+    public Account ( String number, 
+                     double balance, 
+                     String customerName, 
+                     String customerEmail,
+                     String customerPhone ){
+        System.out.println( "Account constructor with parameters. " );
+
+        setNumber(number);
+        setBalance(balance);
+        setCustomerName(customerName);
+        setCustomerEmail(customerEmail);
+        setCustomerPhone(customerPhone);
+    }
+
+    public Account ( String customerName,
+                     customerEmail,
+                     customerPhone) {
+        this("99999", "100.55", customerName, customerEmail, customerPhone);
+//        this.customerName = customerName;
+//        this.customerEmail = customerEmail;
+//        this.customerPhone = customerPhone;
+
+    }
+
     public void deposit ( double depositAmount ){
         this.balance += depositAmount;
         System.out.print( "\nDeposit of " + depositAmount + " made." );
