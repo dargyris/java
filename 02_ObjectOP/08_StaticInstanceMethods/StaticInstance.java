@@ -10,10 +10,13 @@ class StaticInstance {
     }
     // ======================================================
 
+    // Constructor
     public StaticInstance (String message){
         this.itsMessage = message;
     }
 
+    // Access to the instance method:
+    // <name of object from main()>.printInstanceMessage();
     public void printInstanceMessage(){
         System.out.println( "Instance message: " + this.itsMessage );
     }
