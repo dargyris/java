@@ -4,13 +4,20 @@ class Main {
 
         System.out.print("\033[H\033[2J");
 
-        StaticInstanceVar myFirstVar = new StaticInstanceVar("Koulis");
-        StaticInstanceVar mySecondVar = new StaticInstanceVar("Jeffe");
+        StaticVsInstanceVar.itsPublicStaticName = "My Public Static Name";
+        StaticVsInstanceVar.StaticPrintName();
+        System.out.println();
 
-        myFirstVar.printName();
-        System.out.println( "\n" );
-        mySecondVar.printName();
+        StaticVsInstanceVar myFirstInstance = new StaticVsInstanceVar("The First Instance Name!");
+        StaticVsInstanceVar.StaticPrintName();
+        myFirstInstance.InstancePrintName();
+        System.out.println();
 
+        StaticVsInstanceVar mySecondInstance = new StaticVsInstanceVar("The Second Instance Name!");
+        StaticVsInstanceVar.StaticPrintName();
+        myFirstInstance.InstancePrintName();
+        mySecondInstance.InstancePrintName();
+        System.out.println();
 
     }
 
