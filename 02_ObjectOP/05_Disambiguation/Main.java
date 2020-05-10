@@ -1,45 +1,56 @@
-// Object - Instance - Reference - Class
+import java.io.IOException;
+import java.util.Scanner;
+
 public class Main {
 
     public static void main ( String[] args ){
 
         System.out.print("\033[H\033[2J");
-        
-        // Reference to object. 
-        // Since this is the 1st ref, a New object
-        // will be created. Basically a space in
-        // memory containing the string "Blue"
-        // in conjunction with the blueprint provided
-        // by the class.
-        House blueHouseRef = new House ("Blue");
 
-        // Reference to the same object
-        // from above
-        House anotherHouseRef = blueHouseRef;
+        System.out.print( "Enter choice > " );
+        Scanner scanner = new Scanner( System.in );
+        String choice = scanner.nextLine();
+        switch(choice) {
+            case "Parent":
+                ThisVsSuperParent firstParentInstance = new ThisVsSuperParent();
+                firstParentInstance.printMethod();
+                System.out.println();
 
-        // Testing:
-        System.out.println( blueHouseRef.getItsColor() );
-        System.out.println( anotherHouseRef.getItsColor() );
-        
-        anotherHouseRef.setItsColor("Red");
-        System.out.println( blueHouseRef.getItsColor() );
-        System.out.println( anotherHouseRef.getItsColor() );
+                ThisVsSuperParent secondParentInstance = new ThisVsSuperParent(60);
+                secondParentInstance.printMethod();
+                System.out.println();
 
-        House greenHouse = new House("Green");
-        anotherHouseRef = greenHouse;
+                ThisVsSuperParent thirdParentInstance = new ThisVsSuperParent(60, 60);
+                thirdParentInstance.printMethod();
+                System.out.println();
 
-        System.out.println( blueHouseRef.getItsColor() );
-        System.out.println( greenHouse.getItsColor() );
-        System.out.println( anotherHouseRef.getItsColor() );
+                ThisVsSuperParent fourthParentInstance = new ThisVsSuperParent(60, 60, 60);
+                fourthParentInstance.printMethod();
+                System.out.println();
+                break;
+            case "Child":
+                ThisVsSuperChild firstChildInstance = new ThisVsSuperChild();
+                firstChildInstance.printMethod();
+                System.out.println();
 
-// ===============================================
-// This is a class with no variables, no setters
-// and no getters. It only houses two functions
-// that print a message (relevant) on the screen.
+                ThisVsSuperChild secondChildInstance = new ThisVsSuperChild((short)10);
+                secondChildInstance.printMethod();
+                System.out.println();
 
-        ThisSuper object = new ThisSuper();
-        object.whatSuperDoes();
-        object.whatThisDoes();
+                ThisVsSuperChild thirdChildInstance = new ThisVsSuperChild((short)10, (short)10);
+                thirdChildInstance.printMethod();
+                System.out.println();
+
+                ThisVsSuperChild fourthChildInstance = new ThisVsSuperChild((short)10, (short)10, (short)10);
+                fourthChildInstance.printMethod();
+                System.out.println();
+                break;
+            default: 
+                System.out.println( "Bad choice." );
+                break;
+        }
+
+
     }
 
 }
