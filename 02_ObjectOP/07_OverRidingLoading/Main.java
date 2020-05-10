@@ -17,6 +17,7 @@ public class Main {
         OverloadingChild.staticMethod();
         OverloadingChild overloadingChildInstance = new OverloadingChild();
         overloadingChildInstance.instanceMethod();
+        overloadingChildInstance.instanceMethod(2);
     }
 
 }

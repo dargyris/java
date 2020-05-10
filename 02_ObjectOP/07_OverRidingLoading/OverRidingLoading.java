@@ -43,8 +43,15 @@ class OverloadingChild extends OverridingParent{
         System.out.println( "\t~ Overloading Child Constructor ~" );
     }
 
+    public void instanceMethod(int reps) {
+        for(int i = 0; i < reps; i++){
+            System.out.println( "\t> Overloading Child!" );
+        }
+    }
+
+    @Override
     public void instanceMethod(){
-        System.out.println( "Overloading Child: Instance Method." );
+        System.out.println( "Overloading Child: Instance Method OVERRIDE!." );
     }
 
 
