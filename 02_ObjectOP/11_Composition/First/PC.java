@@ -16,17 +16,6 @@ public class PC {
 
     }
 
-    public void powerUp(){
-        // getItsEnclosure.pressPowerButton();
-        itsEnclosure.pressPowerButton();
-        drawLogo();
-    }
-
-    private void drawLogo(){
-        getItsMonitor().drawPixelAt(1200, 50, "yellow");
-        // or access directly with the variable "monitor"
-        // monitor.drawPixelAt(1200, 50, "yellow");
-    }
 
     // =============== Setters ===============
 
@@ -45,15 +34,15 @@ public class PC {
 
     // =============== Getters ===============
 
-    private Case getItsEnclosure(){
+    public Case getItsEnclosure(){
 		return this.itsEnclosure;
 	}
 
-    private Monitor getItsMonitor(){
+    public Monitor getItsMonitor(){
 		return this.itsMonitor;
 	}
 
-    private Motherboard getItsMotherboard(){
+    public Motherboard getItsMotherboard(){
 		return this.itsMotherboard;
 	}
 
