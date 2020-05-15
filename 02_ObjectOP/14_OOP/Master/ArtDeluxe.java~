@@ -1,0 +1,23 @@
+public class ArtDeluxe {
+
+    public ArtDeluxe(){
+        artDeluxe();
+    }
+
+    public void artDeluxe(){
+        System.out.println( "        __                     " ); 
+        System.out.println( "       /                       " ); 
+        System.out.println( "    .-/-.                      " ); 
+        System.out.println( "    |'-'|                      " ); 
+        System.out.println( "    |   |                      " ); 
+        System.out.println( "    |   |   .-\"\"\"\"-.           " ); 
+        System.out.println( "    \\___/  /' .  '. \\   \\|/\\// " ); 
+        System.out.println( "          (`-..:...-')  |`\"\"`| " ); 
+        System.out.println( "           ;-......-;   |    | " ); 
+        System.out.println( "            '------'    \\____/ " ); 
+        System.out.println( "                               " ); 
+        System.out.println( "                               " ); 
+    }
+
+}
+        
