@@ -5,13 +5,13 @@ public class GoodRectangle {
     private int itsWidth;
     private int itsHeight;
 
-    public GoodRectangle(){           // Calls 2nd constructor
-        this(0, 0);
+    public GoodRectangle(){           
+        this(0, 0);         // Calls 2nd constructor
     }
 
-    public GoodRectangle( int width,  // Calls 3rd constructor
+    public GoodRectangle( int width,  
                          int height){
-        this(0, 0, width, height);
+        this(0, 0, width, height);  // Calls 3rd constructor
     }
 
     public GoodRectangle( int x,
