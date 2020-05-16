@@ -27,14 +27,16 @@ public class Entity {
 
     // =======================================
 
-    public void printProperties(){
-        System.out.println( "\t~ " + getClass().getSimpleName() + " Properties ~" );
-        System.out.println( "Name\t: " + this.itsName );
-        System.out.println( "Type\t: " + this.itsType );
-        System.out.println( "Price\t: " + this.itsPrice );
-        System.out.println( "Qty\t: " + this.itsQty );
-        System.out.println( "-------------------------" );
-        System.out.println();
+    public void printServe(){
+        System.out.println( "\t\t" + this.itsName + "\t(Qty: " +  this.itsQty + ")" );
+    }
+
+    public void printReceipt(){
+        System.out.println( "\t\t" + this.itsName + "\tQty: " + this.itsQty + "\tFr. " +  (this.itsQty * this.itsPrice) );
+    }
+
+    public double returnPrice(){
+        return (this.itsQty * this.itsPrice);
     }
 
     // =============== Setters ===============
