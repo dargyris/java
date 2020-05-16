@@ -1,7 +1,11 @@
 class BaseMeat extends Entity{
 
     public BaseMeat(){
-        this("Base Meat", "Meat", 1.d, (short)0);
+        this((short)0);
+    }
+
+    public BaseMeat(short qty){
+        this("B.T.O.\u2122 Base Meat\t", "Meat", 1.d, qty);
     }
 
     public BaseMeat( String name,
@@ -20,7 +24,11 @@ class BaseMeat extends Entity{
 class WhaleBlubber extends Entity{
 
     public WhaleBlubber(){
-        this("B.T.O.\u2122 Whale Blubber", "Meat", 2.5d, (short)0);
+        this((short)0);
+    }
+
+    public WhaleBlubber(short qty){
+        this("B.T.O.\u2122 Whale Blubber\t", "Meat", 2.5d, qty); 
     }
 
     public WhaleBlubber( String name,
@@ -39,7 +47,11 @@ class WhaleBlubber extends Entity{
 class NarwhalBacon extends Entity{
 
     public NarwhalBacon(){
-        this("Natura\u2122 Narwhal Bacon", "Meat", 4.d, (short)0);
+        this((short)0);
+    }
+
+    public NarwhalBacon(short qty){
+        this("Natura\u2122 Narwhal Bacon\t\t", "Meat", 4.d, qty);
     }
 
     public NarwhalBacon( String name,
@@ -58,7 +70,11 @@ class NarwhalBacon extends Entity{
 class PigBabies extends Entity{
 
     public PigBabies(){
-        this("B.T.O.\u2122 New-born Pig Babies", "Meat", 5.5d, (short)0);
+        this((short)0);
+    }
+
+    public PigBabies(short qty){
+        this("B.T.O.\u2122 New-born Pig Babies", "Meat", 5.5d, qty);
     }
 
     public PigBabies( String name,
@@ -77,7 +93,11 @@ class PigBabies extends Entity{
 class EndangeredPenguin extends Entity{
 
     public EndangeredPenguin(){
-        this("Natura\u2122 Endangered Penguin", "Meat", 5.5d, (short)0);
+        this((short)0);
+    }
+
+    public EndangeredPenguin(short qty){
+        this("Natura\u2122 Endangered Penguin\t", "Meat", 5.5d, qty);
     }
 
     public EndangeredPenguin( String name,
