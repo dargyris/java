@@ -15,14 +15,16 @@ public class Hamburger {
     private PigBabies itsPigBabies;
     private RhinoBV itsRhinoBV;
     private BlinkingSC itsBlinkingSC;
+    private Art itsArt;
 
     // ============== Constructors ===========
     
     public Hamburger(){
-        this( new Entity(),             // Entity
-              new AfricaSecret(),       // Bread
-              new BaseMeat(), new WhaleBlubber(), new PigBabies(), // Meat
-              new RhinoBV(), new BlinkingSC());                    // Veggies
+        this( new Entity("B.T.O.\u2122 Hamburger", "Hamburger", 0.d, (short)1),             // Entity
+              new AfricaSecret((short)1),       // Bread
+              new BaseMeat((short)1), new WhaleBlubber(), new PigBabies(), // Meat
+              new RhinoBV(), new BlinkingSC(), // Veggies
+              new Art()); // Access to Art
     }
 
     // =========== Setter Constructor ========
@@ -33,7 +35,8 @@ public class Hamburger {
                       WhaleBlubber whaleBlubber,
                       PigBabies pigBabies,
                       RhinoBV rhinoBV,
-                      BlinkingSC blinkingSC){
+                      BlinkingSC blinkingSC,
+                      Art art){
         this.itsEntity = entity;
         this.itsAfricaSecret = africaSecret;
         this.itsBaseMeat = baseMeat;
@@ -41,11 +44,11 @@ public class Hamburger {
         this.itsPigBabies = pigBabies;
         this.itsRhinoBV = rhinoBV;
         this.itsBlinkingSC = blinkingSC;
+        this.itsArt = art;
 
     }
 
     // =======================================
-
     public boolean order(){
         short choice = -1;
         short threeTries = (short)3;
@@ -54,49 +57,65 @@ public class Hamburger {
             choice = (short)this.getInput();
             switch(choice){
                 case 0:
+                    this.itsEntity.setItsPrice( this.itsAfricaSecret.returnPrice()
+                                    + this.itsBaseMeat.returnPrice() 
+                                    + this.itsWhaleBlubber.returnPrice()
+                                    + this.itsPigBabies.returnPrice()
+                                    + this.itsRhinoBV.returnPrice()
+                                    + this.itsBlinkingSC.returnPrice() );
                     return true;
                 case 1:
-                    
+                    threeTries = (short)3;
+                    this.itsWhaleBlubber.setItsQty((short)(this.itsWhaleBlubber.getItsQty()+1));
+                    break;
                 case 2:
+                    threeTries = (short)3;
+                    this.itsPigBabies.setItsQty((short)(this.itsPigBabies.getItsQty()+1));
+                    break;
                 case 3:
+                    threeTries = (short)3;
+                    this.itsRhinoBV.setItsQty((short)(this.itsRhinoBV.getItsQty()+1));
+                    break;
                 case 4:
-                case 5:
-                case 6:
+                    threeTries = (short)3;
+                    this.itsBlinkingSC.setItsQty((short)(this.itsBlinkingSC.getItsQty()+1));
+                    break;
                 default:
                     if(threeTries > 0){
+                        threeTries --;
                         break;
-                    }
+                    } 
                     return false;
             }
-            threeTries --;
         }
-        return true;
+        System.out.println( "Panic!" ); // Should not reach this point.
+        return false;
     }
 
     // Prints ingredient choices with a different prompt each time.
     public void printOptions(short threeTries){
-        System.out.println( "\t~ Build to Order Hamburger! ~" );
-        System.out.println( "\tWith delicious " + this.itsAfricaSecret.getItsName() + " bread." );
-        System.out.println( "\tAnd " + this.itsBaseMeat.getItsName() + " base meat." );
-        System.out.println( "\tYou can add any four of the following:" );
+        this.itsArt.printArt(LOGO);
+        System.out.println( "\t\t~ Build to Order Hamburger! ~" );
+        System.out.println( "\t\tWith delicious " + this.itsAfricaSecret.getItsName() + " and " 
+                + this.itsBaseMeat.getItsName() );
+        System.out.println( "\t\tYou can add any four of the following:" );
         System.out.println();
-        System.out.println( "\t1. " + this.itsWhaleBlubber.getItsName() );
-        System.out.println( "\t2. " + this.itsPigBabies.getItsName() );
-        System.out.println( "\t3. " + this.itsRhinoBV.getItsName() );
-        System.out.println( "\t4. " + this.itsBlinkingSC.getItsName() );
-        System.out.println( "\n\t0. That's enough. Thank you." );
-
+        System.out.println( "\t\t1. " + this.itsWhaleBlubber.getItsName() + "\t\t\tQty: " + this.itsWhaleBlubber.getItsQty() );
+        System.out.println( "\t\t2. " + this.itsPigBabies.getItsName() + "\t\t\t\tQty: " + this.itsPigBabies.getItsQty() );
+        System.out.println( "\t\t3. " + this.itsRhinoBV.getItsName() + "\t\t\tQty: " + this.itsRhinoBV.getItsQty() );
+        System.out.println( "\t\t4. " + this.itsBlinkingSC.getItsName() + "\t\t\t\tQty: " + this.itsBlinkingSC.getItsQty() );
+        System.out.println( "\n\t\t0. That's enough. Thank you." );
         switch(threeTries){
             case 3:
-                System.out.println( "\n\t" );
+                System.out.print( "\n\t\t> " );
                 break;
             case 2:
-                System.out.println( "\n\tYou need to concentrate new..." );
-                System.out.println( "\t> " );
+                System.out.println( "\n\t\tYou need to concentrate now..." );
+                System.out.print( "\n\t\t> " );
                 break;
             case 1:
-                System.out.println( "\n\tYou don't get this right, you don't eat." );
-                System.out.println( "\t> " );
+                System.out.println( "\n\t\tYou don't get this right, you don't eat." );
+                System.out.print( "\n\t\t> " );
                 break;
             default:
                 System.out.println( "Panic!" );
@@ -120,32 +139,50 @@ public class Hamburger {
         return -1;
     }
 
-    public short serve(){
-        Art theArt = new Art();
-        theArt.printArt(SERVE);
-        theArt.wait((short)300);
-        theArt.printArt(BURGER);
-        this.printProperties();
-        theArt.wait((short)200);
-        theArt.printArt(LOGO);
-        Scanner theScanner = new Scanner(System.in);
-        System.out.println( "\tWould you like to reorder?" );
-        System.out.println( "\tYes please! \t--> 1" );
-        System.out.println( "\tNo thank you\t--> 0" );
+    public boolean serve(){
+        this.itsArt.printArt(SERVE);
+        this.itsArt.load((short)200);
+        this.itsArt.printArt(BURGER);
+        this.printServe();
+        this.itsArt.interact();
+        this.itsArt.printArt(LOGO);
+        System.out.println( "\t\tWould you like to reorder?" );
+        System.out.println( "\n\t\tYes please! \t--> 1" );
+        System.out.println( "\t\tNo thank you.\t--> 0" );
+        System.out.print( "\t\t> " );
         short choice = getInput();
         if( choice == (short)1){
-            return 10;
+            return true;
         }
-        return 0; // In main, choice 0 is exit
+        return false;
     }
 
-    public void printProperties(){
-        System.out.println( "\t~ Hamburger ~" );
-        this.itsAfricaSecret.printProperties();
-        this.itsBaseMeat.printProperties();
-        this.itsWhaleBlubber.printProperties();
-        this.itsRhinoBV.printProperties();
-        this.itsBlinkingSC.printProperties();
+    public void printServe(){
+        System.out.println( "\t\t\t~ Hamburger ~" );
+        this.itsAfricaSecret.printServe();
+        this.itsBaseMeat.printServe();
+        this.itsWhaleBlubber.printServe();
+        this.itsPigBabies.printServe();
+        this.itsRhinoBV.printServe();
+        this.itsBlinkingSC.printServe();
+        System.out.println();
+        System.out.println( "\t\t~ Enjoy! :) ~");
+    }
+
+    public void printReceipt(){
+        this.itsArt.printArt(LOGO);
+        System.out.println( "\t\t\t~ Hamburger: Receipt ~\n" );
+        this.itsAfricaSecret.printReceipt();
+        this.itsBaseMeat.printReceipt();
+        this.itsWhaleBlubber.printReceipt();
+        this.itsPigBabies.printReceipt();
+        this.itsRhinoBV.printReceipt();
+        this.itsBlinkingSC.printReceipt();
+        System.out.println( "\n\t\t-------------------------------------------------" );
+        System.out.println( "\t\t\t\t\t\t~ Total: Fr. " + this.itsEntity.getItsPrice() );
+        System.out.println( "\t\t=================================================" );
+        System.out.print( "\t\t\t\t\t\t> " );
+        this.itsArt.interact();
     }
 
 
