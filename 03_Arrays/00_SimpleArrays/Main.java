@@ -14,7 +14,7 @@ public class Main {
         myVariable = new int[10];
         int[] myArray = new int[10];
 
-        // 1st method of init an array
+        // 1st method of init an array "inline"
         int[] myIntArray = { 1,2,3,4,5,6,7,8,9,10 };
         double[] myDoubleArray = new double[10];
         System.out.println( myIntArray[5] );
