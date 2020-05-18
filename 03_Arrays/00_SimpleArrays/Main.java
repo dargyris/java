@@ -11,16 +11,15 @@ public class Main {
         theScanner = new Scanner (System.in);
         int[] myVariable;
 
-        // 1st method of init an array
         myVariable = new int[10];
         int[] myArray = new int[10];
 
-        // 2nd method of init an array
+        // 1st method of init an array
         int[] myIntArray = { 1,2,3,4,5,6,7,8,9,10 };
         double[] myDoubleArray = new double[10];
         System.out.println( myIntArray[5] );
 
-        // 3rd method of init an array
+        // 2nd method of init an array
         int[] myIntArrB = new int[10];
         for(int i = 0; i < myIntArrB.length; i++){
             myIntArrB[i] = i*10;
