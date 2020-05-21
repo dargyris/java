@@ -1,0 +1,9 @@
+    ~ Useful Info ~
+
+Arrays:
+    1. int[] myArray = new int[5];
+    2. int[] myArray = { 1, 2, 3, 4, 5 };
+    3. int[] myArray = {
+                           { 1, 2, 3 },
+                           { 4, 5, 6, 7 }
+                       };
