@@ -1,4 +1,4 @@
-class Arrays {
+class BubbleSort {
     public static void main ( String[] args ){
 
         int[] intArray = new int[7]; // Not dynamic data structure!
