@@ -28,12 +28,11 @@ class BubbleSort {
     }
 
     public static void printArray ( int[] myArr ){
-        System.out.printf( "\n===================================\n" );
+        System.out.printf( "\n====================================\n" );
         for ( int i=0; i<myArr.length; i++ ){
             System.out.printf( " %3d ", myArr[i] );
         }
-        System.out.println();
-        System.out.printf( "===================================\n" );
+        System.out.printf( "\n====================================\n" );
     }
 
     public static void swap ( int[] array, int i, int j ){
