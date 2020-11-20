@@ -19,15 +19,15 @@ class InsertionSort {
                 firstUnsortedIndex < intArray.length;
                 firstUnsortedIndex++ ){
 
-            int newElement = intArray[firstUnsortedIndex];
+            int tempElement = intArray[firstUnsortedIndex];
 
             int i;
             for ( i = firstUnsortedIndex; 
-                    i>0 && intArray[i-1] > newElement;
+                    i>0 && intArray[i-1] > tempElement;
                     i-- ){
                 intArray[i] = intArray[i-1];
             }
-            intArray[i] = newElement;
+            intArray[i] = tempElement;
 
         }
 
