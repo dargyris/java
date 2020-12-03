@@ -9,9 +9,20 @@ public class Main {
         System.out.printf("Enter number of elements:\n\t> ");
         int n = scanner.nextInt();
         int[] intArray = getIntegers(n);
+        int[] arrayCopy = new int[intArray.length];
+        copyArray(intArray, arrayCopy);
         printArray(intArray);
-        sortArray(intArray);
+        printArray(arrayCopy);
+        sortArrayI(intArray);
+        sortArrayII(arrayCopy);
         printArray(intArray);
+        printArray(arrayCopy);
+    }
+
+    public static void copyArray(int[] array, int[] arrayCopy) {
+        for (int i = 0; i < array.length; i ++) {
+            arrayCopy[i] = array[i];
+        }
     }
 
     public static int[] getIntegers(int n) {
@@ -27,13 +38,29 @@ public class Main {
         System.out.println(Arrays.toString(array));
     }
 
-    public static void sortArray(int[] array) {
+    public static void sortArrayI(int[] array) {
         for (int i = 0; i < array.length; i++) {
             for (int j = i; j < array.length; j++) {
                 if (array[i] < array[j]){
                     int temp = array[i];
                     array[i] = array[j];
                     array[j] = temp;
+                }
+            }
+        }
+    }
+
+    public static void sortArrayII(int[] array) {
+        boolean flag = true;
+        int temp;
+        while (flag) {
+            flag = false;
+            for (int i = 0; i < array.length - 1; i++) {
+                if (array[i] < array[i+1]) {
+                    temp = array[i];
+                    array[i] = array[i + 1];
+                    array[i + 1] = temp;
+                    flag = true;
                 }
             }
         }
