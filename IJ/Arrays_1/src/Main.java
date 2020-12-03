@@ -2,28 +2,35 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
-    private static Scanner scanner = new Scanner(System.in);
+    private static final Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
 
-        System.out.printf("Enter number of elements:\n\t> ");
+        System.out.print("Enter number of elements:\n\t> ");
         int n = scanner.nextInt();
         int[] intArray = getIntegers(n);
-        int[] arrayCopy = new int[intArray.length];
-        copyArray(intArray, arrayCopy);
+//        int[] arrayCopy = new int[intArray.length];
+        int[] arrayCopy = Arrays.copyOf(intArray, intArray.length);
+//        copyArray(intArray, arrayCopy);
         printArray(intArray);
         printArray(arrayCopy);
+        System.out.println();
+        Arrays.sort(intArray, 0, intArray.length);
+        Arrays.sort(arrayCopy, 0, intArray.length);
+        printArray(intArray);
+        printArray(arrayCopy);
+        System.out.println();
         sortArrayI(intArray);
         sortArrayII(arrayCopy);
         printArray(intArray);
         printArray(arrayCopy);
     }
 
-    public static void copyArray(int[] array, int[] arrayCopy) {
-        for (int i = 0; i < array.length; i ++) {
-            arrayCopy[i] = array[i];
-        }
-    }
+//    public static void copyArray(int[] array, int[] arrayCopy) {
+//        for (int i = 0; i < array.length; i ++) {
+//            arrayCopy[i] = array[i];
+//        }
+//    }
 
     public static int[] getIntegers(int n) {
 
