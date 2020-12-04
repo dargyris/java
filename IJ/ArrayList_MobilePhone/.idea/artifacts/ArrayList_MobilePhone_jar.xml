@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="ArrayList_MobilePhone:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/ArrayList_MobilePhone_jar</output-path>
+    <root id="archive" name="ArrayList_MobilePhone.jar">
+      <element id="module-output" name="ArrayList_MobilePhone" />
+    </root>
+  </artifact>
+</component>
