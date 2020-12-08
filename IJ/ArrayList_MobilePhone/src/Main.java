@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -9,40 +10,57 @@ public class Main {
         boolean quit = false;
         boolean badInput = false;
         while (!quit) {
-            int choice = printMenu(badInput);
+            int choice = 0;
+            try {
+                choice = printMenu(badInput);
+            }catch (InputMismatchException e) {
+                badInput = true;
+                scanner.nextLine();
+                continue;
+            }
             switch (choice) {
                 case 0: // Quit
                     quit = true;
                     break;
                 case 1: // Print contacts
+                    badInput = false;
                     printContacts();
                     scanner.nextLine();
                     break;
                 case 2: // Add contact
+                    badInput = false;
                     addContact();
                     scanner.nextLine();
                     break;
                 case 3: // Remove contact
+                    badInput = false;
                     removeContact();
                     scanner.nextLine();
                     break;
                 case 4: // Find contact
+                    badInput = false;
                     searchContact();
                     scanner.nextLine();
                     break;
                 case 5: // Print menu
+                    badInput = false;
                     printMenu(badInput);
                     break;
                 case 6: // Fast search
+                    badInput = false;
                     fastSearch();
                     scanner.nextLine();
                     break;
                 case 7: // Modify contact
+                    badInput = false;
                     modifyContact();
+                    break;
                 default: //Bad input
                     badInput = true;
+                    continue;
 
             }
+
         }
         System.out.println("Goodbye.\n");
     }
@@ -54,11 +72,11 @@ public class Main {
         System.out.println("3. Remove Contact");
         System.out.println("4. Find Contact");
         System.out.println("5. Print Menu");
-        System.out.println("6. Fast Search");
+        System.out.println("6. Fast Search by Name string");
         System.out.println("7. Modify Contact");
         System.out.println("0. Quit Application");
         if (badInput) {
-            System.out.println("\nBad input. Plase try again.");
+            System.out.println("\nBad input. Please try again.");
         }
         System.out.print("\t> ");
         return scanner.nextInt();
@@ -106,9 +124,9 @@ public class Main {
     }
 
     public static void modifyContact() {
-        System.out.print("Please enter old contact details:\n\t> ");
+        System.out.print("Please enter old contact details:\n");
         Contact oldContact = getContact();
-        System.out.print("Please enter new contact details:\n\t> ");
+        System.out.print("Please enter new contact details:\n");
         Contact newContact = getContact();
         mobilePhone.modify(oldContact, newContact);
         scanner.nextLine();

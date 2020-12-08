@@ -11,6 +11,10 @@ public class Contact {
         this.firstName = firstName;
     }
 
+//    public static Contact createContact(String fName, String lName, String pNumber) {
+//        return new Contact(fName, lName, pNumber);
+//    }
+
     // Constructor for all data
     public Contact(String firstName, String lastName, String phoneNumber) {
         this.firstName = firstName;

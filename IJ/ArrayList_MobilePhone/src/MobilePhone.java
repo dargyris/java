@@ -1,7 +1,11 @@
 import java.util.ArrayList;
 
 public class MobilePhone {
-    private ArrayList<Contact> contacts = new ArrayList<>();
+    private ArrayList<Contact> contacts;
+
+    public MobilePhone() {
+        contacts = new ArrayList<>();
+    }
 
     private void printContact(int index) {
         System.out.println((index + 1) + ". " + contacts.get(index).getFirstName()
@@ -22,70 +26,76 @@ public class MobilePhone {
 
     // Indices where a first name appears.
     private ArrayList<Integer> getFirstNameIndices(String firstName) {
-        ArrayList<Integer> firstNameMatches = new ArrayList<>();
+        ArrayList<Integer> firstNameIndices = new ArrayList<>();
         if (contacts.isEmpty()) {
             return null;
         }
 
         for (int i = 0; i < contacts.size(); i++) {
             if (contacts.get(i).getFirstName().equals(firstName)) {
-                firstNameMatches.add(i);
+                firstNameIndices.add(i);
             }
         }
-        return firstNameMatches;
+        return firstNameIndices;
     }
 
     // Indices where a last name appears.
     private ArrayList<Integer> getLastNameIndices(String lastName) {
-        ArrayList<Integer> firstNameMatches = new ArrayList<>();
+        ArrayList<Integer> lastNameIndices = new ArrayList<>();
         if (contacts.isEmpty()) {
             return null;
         }
 
         for (int i = 0; i < contacts.size(); i++) {
-            if (contacts.get(i).getFirstName().equals(lastName)) {
-                firstNameMatches.add(i);
+            if (contacts.get(i).getLastName().equals(lastName)) {
+                lastNameIndices.add(i);
             }
         }
-        return firstNameMatches;
+        return lastNameIndices;
     }
 
     // Indices where a phone number appears.
     private ArrayList<Integer> getPhoneNumberIndices(String phoneNumber) {
-        ArrayList<Integer> firstNameMatches = new ArrayList<>();
+        ArrayList<Integer> phoneNumberIndices = new ArrayList<>();
         if (contacts.isEmpty()) {
             return null;
         }
 
         for (int i = 0; i < contacts.size(); i++) {
-            if (contacts.get(i).getFirstName().equals(phoneNumber)) {
-                firstNameMatches.add(i);
+            if (contacts.get(i).getPhoneNumber().equals(phoneNumber)) {
+                phoneNumberIndices.add(i);
             }
         }
-        return firstNameMatches;
+        return phoneNumberIndices;
     }
 
-    // A contact is Unique: All indices must match.
+    // A contact is Unique: All indices must match. Returns the index of the contact.
     private int getContactIndex(Contact contact) {
         ArrayList<Integer> firstNameIndices = getFirstNameIndices(contact.getFirstName());
         ArrayList<Integer> lastNameIndices = getLastNameIndices(contact.getLastName());
         ArrayList<Integer> phoneNumberIndices = getPhoneNumberIndices(contact.getPhoneNumber());
-        boolean indicesExist = !firstNameIndices.isEmpty()
-                && !lastNameIndices.isEmpty()
-                && !phoneNumberIndices.isEmpty();
-        if (indicesExist) {
-            for (int i = 0; i < firstNameIndices.size(); i++) {
-                if (lastNameIndices.contains(firstNameIndices.get(i))
-                        && phoneNumberIndices.contains((firstNameIndices.get(i)))) {
-                    return firstNameIndices.get(i);
-                }
+        boolean indicesExist = !(firstNameIndices == null)
+                && !(lastNameIndices == null)
+                && !(phoneNumberIndices == null);
+        if (!indicesExist) {    // One or more index checkers are empty. Contact does not exist.
+            return -1;
+        }
+
+        // Match checker. All three indices must match for the contact to already exist.
+        // Contacts are unique. When match found, that is the one. It can return.
+        for (int i = 0; i < firstNameIndices.size(); i++) {
+            int firstNameIndex = firstNameIndices.get(i);
+            if (lastNameIndices.contains(firstNameIndex)
+                    && phoneNumberIndices.contains(firstNameIndex)) {
+                return firstNameIndex;
             }
         }
-        return -1;
+
+        return -1;  // Match checker failed. Contact does not exist.
     }
 
     public void addContact(Contact contact) {
-        int contactIndex = getContactIndex(contact);
+        int contactIndex = getContactIndex(contact);    // If empty list or unique new contact returns -1.
         if (contactIndex < 0) { // Contact doesn't exist
             contacts.add(contact);
             System.out.println(contact.getFirstName() + " successfully added.");
@@ -119,15 +129,17 @@ public class MobilePhone {
 
     public void findFast(String name) {
         ArrayList<Integer> positions = new ArrayList<>();
-        positions = getFirstNameIndices(name);
-        positions.addAll(getLastNameIndices((name)));
-        for (int i = 0; i < positions.size(); i++) {
-            for (int j = i; j < positions.size(); j++) {
+        positions.addAll(getFirstNameIndices(name));
+        positions.addAll(getLastNameIndices(name));
+        System.out.println(positions.toString());
+        for (int i = 0; i < positions.size() - 1; i++) {    // Remove duplicate appearances when fName == lName
+            for (int j = i + 1; j < positions.size(); j++) {
                 if (positions.get(i).equals(positions.get(j))) {
                     positions.remove(j);
                 }
             }
         }
+        System.out.println(positions.toString());
         for (int i = 0; i < positions.size(); i++) {
             printContact(positions.get(i));
         }
@@ -136,7 +148,7 @@ public class MobilePhone {
     public void modify(Contact oldContact, Contact newContact) {
         int oldContactIndex = getContactIndex(oldContact);
         if (oldContactIndex < 0) { // Contact doesn't exist
-            System.out.println("Contact does not exist!");
+            System.out.println("Old contact does not exist!");
             return;
         }
 
