@@ -42,6 +42,15 @@ public class Main {
         playlist.addSong("Riding with the King", "Riding with the King", "B.B. King E. Clapton", collection);
         playlist.addSong("I Wanna Be", "Riding with the King", "B.B. King E. Clapton", collection);
         playlist.addSong("Sultans of Swing", "Dire Straits", "Dire Straits", collection);
-        playlist.play();
+        playlist.getPlaylist().forEach(song -> System.out.println(song.toString()));
+        System.out.println();
+
+//        Object[] songArray = playlist.getPlaylist().toArray(new Song[playlist.getPlaylist().size()]);
+//        for (int i = 0; i < songArray.length; i++) {
+//            System.out.println(songArray[i]);
+//        }
+        System.out.println(System.getenv());
+
+//        playlist.play();
     }
 }

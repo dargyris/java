@@ -25,6 +25,10 @@ public class Playlist {
         return -1;
     }
 
+    public List<Song> getPlaylist() {
+        return playlist;
+    }
+
     public boolean listSongs() {
         if (playlist.isEmpty()) {
             return false;
