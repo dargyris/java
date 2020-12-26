@@ -1,21 +1,25 @@
 package com.example;
 
-import java.util.*;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
-public class AList<T> implements Iterable<T> {
+public class AListSize<T> implements Iterable<T> {
 
     private T[] array;
+    private int size;
 
-    public AList() {
+    public AListSize() {
         array = (T[]) new Object[10];
+        size = 0;
     }
 
-    public AList(int capacity) {
+    public AListSize(int capacity) {
         if (capacity < 10) {
             array = (T[]) new Object[10];
         } else {
             array = (T[]) new Object[capacity];
         }
+        size = 0;
     }
 
     @Override
@@ -24,7 +28,7 @@ public class AList<T> implements Iterable<T> {
     }
 
     class IteratorHelper implements Iterator<T> {
-        private int index;
+        private int  index;
 
         public IteratorHelper() {
             index = 0;
@@ -44,7 +48,7 @@ public class AList<T> implements Iterable<T> {
         }
 
         @Override
-        public T next(){
+        public T next() {
             if (!hasNext()) {
                 throw new NoSuchElementException();
             }
@@ -55,22 +59,10 @@ public class AList<T> implements Iterable<T> {
         }
     }
 
-    private int size() {
-        int index = 0;
-        while (array[index] != null) {
-            index++;
-        }
-        return index;
-    }
-
     public String toString() {
-        String output = "size / capacity: " + size() + '/' + array.length + "\n{  ";
+        String output = "size/capacity: " + size + '/' + array.length + "\n{  ";
         for (int i = 0; i < array.length; i++) {
-            if (array[i] != null) {
-                output = output + "****  ";
-            } else {
-                output = output + "NULL  ";
-            }
+            output = array[i] != null ? output + "****  " : output + "NULL  ";
         }
         output = output + "}";
         return output;
@@ -83,7 +75,7 @@ public class AList<T> implements Iterable<T> {
     }
 
     private boolean arrayDouble() {
-        if (size() > (2 * array.length) / 3) {
+        if (size > (2 * array.length) / 3) {
             T[] newArray = (T[]) new Object[array.length * 2];
             System.arraycopy(array, 0, newArray, 0, array.length);
             array = newArray;
@@ -93,40 +85,43 @@ public class AList<T> implements Iterable<T> {
     }
 
     public boolean addFirst(T obj) {
-        int index = size();
+        int index = size;
         while (index >= 0) {
             array[index + 1] = array[index];
             index--;
         }
         arrayDouble();
         array[0] = obj;
+        size++;
         return true;
     }
 
     public boolean addLast(T obj) {
-        int index = size();
+        int index = size;
         array[index] = obj;
         arrayDouble();
+        size++;
         return true;
     }
 
     public boolean add(T obj, int position) {
-        if (position < 0 || position >= size()) {
+        if (position < 0 || position >= size) {
             return false;
         }
 
-        int index = size() - 1;
+        int index = size - 1;
         while (index >= position) {
             array[index + 1] = array[index];
             index--;
         }
         array[position] = obj;
         arrayDouble();
+        size++;
         return true;
     }
 
     private boolean arrayReduce() {
-        if (size() < array.length / 2) {
+        if (size < array.length / 2) {
             T[] newArray = (T[]) new Object[array.length / 2];
             System.arraycopy(array, 0, newArray, 0, newArray.length);
             array = newArray;
@@ -139,17 +134,12 @@ public class AList<T> implements Iterable<T> {
         try {
             int index = 0;
             T val = array[0];
-            while (index < size()) {
-//                try {
-//                    array[index] = array[index + 1];
-//                    index++;
-//                } catch (ArrayIndexOutOfBoundsException e) {
-//                    array[index] = null;
-//                }
+            while (index < size) {
                 array[index] = array[index + 1];
                 index++;
             }
             arrayReduce();
+            size--;
             return val;
         } catch (NullPointerException e) {
             return null;
@@ -158,10 +148,11 @@ public class AList<T> implements Iterable<T> {
 
     public T removeLast() {
         try {
-            int index = size() - 1;
+            int index = size - 1;
             T val = array[index];
             array[index] = null;
             arrayReduce();
+            size--;
             return val;
         } catch (NullPointerException e) {
             return null;
@@ -169,24 +160,25 @@ public class AList<T> implements Iterable<T> {
     }
 
     public T remove(int position) {
-        if (position < 0 || position >= size()) {
+        if (position < 0 || position >= size) {
             return null;
         }
 
         T val = array[position];
         int index = position;
-        while (index < size()) {
+        while (index < size) {
             array[index] = array[index + 1];
             index++;
         }
         arrayReduce();
+        size--;
         return val;
     }
 
     public boolean contains(T obj) {
         int index = 0;
-        while (index < size()) {
-            if (((Comparable<T>)obj).compareTo(array[index]) == 0){
+        while (index < size) {
+            if (((Comparable<T>) obj).compareTo(array[index]) == 0) {
                 return true;
             }
             index++;
@@ -196,7 +188,7 @@ public class AList<T> implements Iterable<T> {
 
     public int indexOf(T obj) {
         int index = 0;
-        while (index < size()) {
+        while (index < size) {
             if (((Comparable<T>) obj).compareTo(array[index]) == 0) {
                 return index;
             }
@@ -227,7 +219,7 @@ public class AList<T> implements Iterable<T> {
 
     public T peekLast() {
         try {
-            return array[size() - 1];
+            return array[size - 1];
         } catch (NoSuchElementException e) {
             return null;
         }

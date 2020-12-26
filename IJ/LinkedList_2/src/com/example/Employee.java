@@ -2,7 +2,7 @@ package com.example;
 
 import java.util.Objects;
 
-public class Employee {
+public class Employee implements Comparable<Employee> {
     private String firstName;
     private String lastName;
     private int id;
@@ -11,6 +11,16 @@ public class Employee {
         this.firstName = firstName;
         this.lastName = lastName;
         this.id = id;
+    }
+
+    public int compareTo(Employee employee) {
+        if (employee.firstName.equals(firstName) &&
+        employee.lastName.equals(lastName) &&
+        employee.id == id) {
+            return 0;
+        }
+
+        return -1;
     }
 
     public String getFirstName() {
