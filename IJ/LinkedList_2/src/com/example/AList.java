@@ -63,17 +63,19 @@ public class AList<T> implements Iterable<T> {
         return index;
     }
 
+    @Override
     public String toString() {
-        String output = "size / capacity: " + size() + '/' + array.length + "\n{  ";
+        StringBuilder s = new StringBuilder();
+        s.append("size / capacity: " + size() + '/' + array.length + "\n{  ");
         for (int i = 0; i < array.length; i++) {
             if (array[i] != null) {
-                output = output + "****  ";
+                s.append("****  ");
             } else {
-                output = output + "NULL  ";
+                s.append("NULL  ");
             }
         }
-        output = output + "}";
-        return output;
+        s.append("}");
+        return s.toString();
     }
 
     private void swap(int i, int j) {
@@ -183,17 +185,6 @@ public class AList<T> implements Iterable<T> {
         return val;
     }
 
-    public boolean contains(T obj) {
-        int index = 0;
-        while (index < size()) {
-            if (((Comparable<T>)obj).compareTo(array[index]) == 0){
-                return true;
-            }
-            index++;
-        }
-        return false;
-    }
-
     public int indexOf(T obj) {
         int index = 0;
         while (index < size()) {
@@ -203,6 +194,10 @@ public class AList<T> implements Iterable<T> {
             index++;
         }
         return -1;
+    }
+
+    public boolean contains(T obj) {
+        return indexOf(obj) >= 0;
     }
 
     public boolean push(T obj) {

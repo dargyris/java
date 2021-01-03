@@ -11,7 +11,7 @@ public class Main {
         Employee andrew = new Employee("Andrew", "Knife", 39);
         Employee gandalf = new Employee("Gandalf", "Genious", 49);
 
-        AListSize<Employee> list = new AListSize<>();
+        LListSize<Employee> list = new LListSize<>();
 
         System.out.println(list.addFirst(lynda) ? "Success" : "Fail");
         System.out.println(list.addLast(lynda) ? "Success" : "Fail");

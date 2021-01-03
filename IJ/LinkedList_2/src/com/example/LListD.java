@@ -3,25 +3,34 @@ package com.example;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class LList<E> implements Iterable<E> {
+public class LListD<E> implements Iterable<E> {
     class Node<E> {
         private E data;
         private Node next;
+        private Node prev;
 
         public Node(E obj) {
             data = obj;
             next = null;
+            prev = null;
         }
 
         private boolean hasNext() {
             return next != null;
         }
+
+        private boolean hasPrevious() {
+            return prev != null;
+        }
     }
 
     private Node<E> head;
+    private Node<E> tail;
+    private int size;
 
-    public LList() {
-        head = null;
+    public LListD() {
+        head = tail = null;
+        size = 0;
     }
 
     @Override
@@ -52,27 +61,23 @@ public class LList<E> implements Iterable<E> {
         }
     }
 
-    private int size() {
-        int index = 1;
-        Node<E> tmp = head;
-        while (tmp.hasNext()) {
-            index++;
-            tmp = tmp.next;
-        }
-        return index;
-    }
-
     @Override
     public String toString() {
         StringBuilder s = new StringBuilder();
-        s.append("size: " + size());
+        s.append("size: " + size);
         return s.toString();
     }
 
     public boolean addFirst(E obj) {
         Node<E> node = new Node<>(obj);
+        if (head == null) {
+            head = tail = node;
+            size++;
+            return true;
+        }
         node.next = head;
         head = node;
+        size++;
         return true;
     }
 
@@ -80,21 +85,17 @@ public class LList<E> implements Iterable<E> {
         if (head == null) {
             return addFirst(obj);
         }
+
         Node<E> node = new Node<>(obj);
-        Node<E> tmp = head;
-        while (tmp.hasNext()) {
-            tmp = tmp.next;
-        }
-        tmp.next = node;
+        node.prev = tail;
+        tail.next = node;
+        tail = node;
+        size++;
         return true;
     }
 
     public boolean add(E obj, int position) {
-        if (position < 0) {
-            return false;
-        }
-        int size = size();
-        if (position >= size) {
+        if (position < 0 || position >= size) {
             return false;
         }
         if (position == 0) {
@@ -113,8 +114,11 @@ public class LList<E> implements Iterable<E> {
             tmp = tmp.next;
             index++;
         }
-        prev.next = node;
         node.next = tmp;
+        node.prev = prev;
+        tmp.prev = node;
+        prev.next = node;
+        size++;
         return true;
     }
 
@@ -122,36 +126,31 @@ public class LList<E> implements Iterable<E> {
         if (head == null) {
             return null;
         }
+
         E val = head.data;
-        head = head.next;
+        if (head == tail) {
+            head = tail = null;
+        } else {
+            head = head.next;
+        }
+        size--;
         return val;
     }
 
     public E removeLast() {
-        if (head == null) {
-            return null;
-        }
-        if (head.next == null) {
+        if (head == null || head == tail) {
             return removeFirst();
         }
 
-        Node<E> tmp = head;
-        Node<E> prev = null;
-        while (tmp.hasNext()) {
-            prev = tmp;
-            tmp = tmp.next;
-        }
-        E val = tmp.data;
-        prev.next = null;
+        E val = tail.data;
+        tail = tail.prev;
+        tail.next = null;
+        size--;
         return val;
     }
 
     public E remove(int position) {
-        if (position < 0) {
-            return null;
-        }
-        int size = size();
-        if (position >= size) {
+        if (position < 0 || position >= size) {
             return null;
         }
         if (position == 0) {
@@ -171,14 +170,16 @@ public class LList<E> implements Iterable<E> {
         }
         E val = tmp.data;
         prev.next = tmp.next;
-        tmp.next = null;
+        tmp.next.prev = prev;
+        tmp.next = tmp.prev = null;
+        size--;
         return val;
     }
 
     public int indexOf(E obj) {
         Node<E> tmp = head;
         int index = 0;
-        while (index < size()) {
+        while (tmp != null) {
             if (((Comparable<E>) obj).compareTo(tmp.data) == 0) {
                 return index;
             }
@@ -212,17 +213,9 @@ public class LList<E> implements Iterable<E> {
     }
 
     public E peekLast() {
-        if (head == null) {
+        if (tail == null) {
             return null;
         }
-        if (head.next == null) {
-            return peekFirst();
-        }
-        Node<E> tmp = head;
-        while (tmp.hasNext()) {
-            tmp = tmp.next;
-        }
-        return tmp.data;
+        return tail.data;
     }
-
 }

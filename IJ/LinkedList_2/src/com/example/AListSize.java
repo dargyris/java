@@ -59,6 +59,7 @@ public class AListSize<T> implements Iterable<T> {
         }
     }
 
+    @Override
     public String toString() {
         String output = "size/capacity: " + size + '/' + array.length + "\n{  ";
         for (int i = 0; i < array.length; i++) {
@@ -175,17 +176,6 @@ public class AListSize<T> implements Iterable<T> {
         return val;
     }
 
-    public boolean contains(T obj) {
-        int index = 0;
-        while (index < size) {
-            if (((Comparable<T>) obj).compareTo(array[index]) == 0) {
-                return true;
-            }
-            index++;
-        }
-        return false;
-    }
-
     public int indexOf(T obj) {
         int index = 0;
         while (index < size) {
@@ -195,6 +185,10 @@ public class AListSize<T> implements Iterable<T> {
             index++;
         }
         return -1;
+    }
+
+    public boolean contains(T obj) {
+        return indexOf(obj) >= 0;
     }
 
     public boolean push(T obj) {
