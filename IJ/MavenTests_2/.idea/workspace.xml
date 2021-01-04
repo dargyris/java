@@ -1,12 +1,197 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="8e357c42-be79-4da0-bb89-9da24572734b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MavenTests_2.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Rectangle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/ExampleTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MavenTests_3/MavenTests_3.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MavenTests_3/src/main/java/Rectangle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MavenTests_3/src/test/java/RectangleTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
   <component name="CodeInsightWorkspaceSettings">
     <option name="optimizeImportsOnTheFly" value="true" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JUnit5 Test Class" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="1mZHcrbY5yJbSd74uKAIcC0VqOa" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.folding" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.ExampleTest">
+    <configuration name="ExampleTest$WhenShapeExists$ShouldNot.invalidName" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="MavenTests_2" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="ExampleTest$WhenShapeExists$ShouldNot" />
+      <option name="METHOD_NAME" value="invalidName" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ExampleTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="MavenTests_2" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="ExampleTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ExampleTest.anotherParamTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="MavenTests_2" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="ExampleTest" />
+      <option name="METHOD_NAME" value="anotherParamTest(int)" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ExampleTest.conditionalTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="MavenTests_2" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="ExampleTest" />
+      <option name="METHOD_NAME" value="conditionalTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ExampleTest.parameterizedTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="MavenTests_2" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="ExampleTest" />
+      <option name="METHOD_NAME" value="parameterizedTest(int)" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.ExampleTest" />
+        <item itemvalue="JUnit.ExampleTest$WhenShapeExists$ShouldNot.invalidName" />
+        <item itemvalue="JUnit.ExampleTest.anotherParamTest" />
+        <item itemvalue="JUnit.ExampleTest.parameterizedTest" />
+        <item itemvalue="JUnit.ExampleTest.conditionalTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8e357c42-be79-4da0-bb89-9da24572734b" name="Default Changelist" comment="" />
+      <created>1609694274412</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1609694274412</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="3824" y="-681" key="#com.intellij.ide.util.MemberChooser" timestamp="1609699367208">
+      <screen x="1280" y="-1471" width="3840" height="2160" />
+    </state>
+    <state x="3824" y="-681" key="#com.intellij.ide.util.MemberChooser/0.0.1280.800/1280.-1471.3840.2160/5120.-1871.1440.2560@1280.-1471.3840.2160" timestamp="1609699367208" />
+    <state width="2172" height="652" key="GridCell.Tab.0.bottom" timestamp="1609776173444">
+      <screen x="1280" y="-1471" width="3840" height="2160" />
+    </state>
+    <state width="2172" height="652" key="GridCell.Tab.0.bottom/0.0.1280.800/1280.-1471.3840.2160/5120.-1871.1440.2560@1280.-1471.3840.2160" timestamp="1609776173444" />
+    <state width="2172" height="652" key="GridCell.Tab.0.center" timestamp="1609776173442">
+      <screen x="1280" y="-1471" width="3840" height="2160" />
+    </state>
+    <state width="2172" height="652" key="GridCell.Tab.0.center/0.0.1280.800/1280.-1471.3840.2160/5120.-1871.1440.2560@1280.-1471.3840.2160" timestamp="1609776173442" />
+    <state width="2172" height="652" key="GridCell.Tab.0.left" timestamp="1609776173442">
+      <screen x="1280" y="-1471" width="3840" height="2160" />
+    </state>
+    <state width="2172" height="652" key="GridCell.Tab.0.left/0.0.1280.800/1280.-1471.3840.2160/5120.-1871.1440.2560@1280.-1471.3840.2160" timestamp="1609776173442" />
+    <state width="2172" height="652" key="GridCell.Tab.0.right" timestamp="1609776173443">
+      <screen x="1280" y="-1471" width="3840" height="2160" />
+    </state>
+    <state width="2172" height="652" key="GridCell.Tab.0.right/0.0.1280.800/1280.-1471.3840.2160/5120.-1871.1440.2560@1280.-1471.3840.2160" timestamp="1609776173443" />
+    <state x="3549" y="-732" key="Maven.ArtifactSearchDialog" timestamp="1609699096512">
+      <screen x="1280" y="-1471" width="3840" height="2160" />
+    </state>
+    <state x="3549" y="-732" key="Maven.ArtifactSearchDialog/0.0.1280.800/1280.-1471.3840.2160/5120.-1871.1440.2560@1280.-1471.3840.2160" timestamp="1609699096512" />
+    <state x="3790" y="-574" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1609694746090">
+      <screen x="1280" y="-1471" width="3840" height="2160" />
+    </state>
+    <state x="3790" y="-574" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1280.800/1280.-1471.3840.2160/5120.-1871.1440.2560@1280.-1471.3840.2160" timestamp="1609694746090" />
+    <state x="3395" y="-731" key="new project wizard" timestamp="1609774042829">
+      <screen x="1280" y="-1471" width="3840" height="2160" />
+    </state>
+    <state x="3395" y="-731" key="new project wizard/0.0.1280.800/1280.-1471.3840.2160/5120.-1871.1440.2560@1280.-1471.3840.2160" timestamp="1609774042829" />
   </component>
 </project>
