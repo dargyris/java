@@ -1,33 +1,34 @@
-package com.example;
+package org.example;
 
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 public class ChainHash<K,V> {
-    class HashElement<K,V> implements Comparable<HashElement<K, V>> {
+    class HashElement<K, V> implements Comparable<HashElement<K, V>> {
         K key;
         V value;
+
         public HashElement(K key, V value) {
             this.key = key;
             this.value = value;
         }
 
-        public int compareTo(HashElement<K,V> o) {
-            return (((Comparable<K>)this.key).compareTo(o.key));
+        public int compareTo(HashElement<K, V> element) {
+            return (((Comparable<K>) this.key).compareTo(element.key));
         }
     }
 
+    List<HashElement<K, V>>[] harray;
     int numElements;
     int tableSize;
     double maxLoadFactor;
-    List<HashElement<K, V>>[] harray;
 
     public ChainHash(int tableSize) {
         this.tableSize = tableSize;
         harray = (LinkedList<HashElement<K, V>>[]) new LinkedList[tableSize];
         for (int i = 0; i < tableSize; i++) {
-            harray[i] = new LinkedList<HashElement<K, V>>();
+            harray[i] = new LinkedList<>();
         }
         maxLoadFactor = 0.75;
         numElements = 0;
@@ -105,4 +106,6 @@ public class ChainHash<K,V> {
         numElements++;
         return true;
     }
+
+
 }
