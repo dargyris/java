@@ -1,4 +1,4 @@
-package org.example;
+package org.example.arrays;
 
 import java.util.Arrays;
 
@@ -19,7 +19,7 @@ public class Main {
         **/
         String string1 = "restful";
         String string2 = "fluster";
-        System.out.println(AnagramProblem.checkIfAnagrams(string1, string2));
+        System.out.println(Anagram.checkIfAnagrams(string1, string2));
 
         /* 3. Find duplicates in a 1-D Array of ints when they are smaller than the
         / length of the array.
@@ -28,7 +28,7 @@ public class Main {
         / 3. Using absolute values: O(N) and in-place
         **/
         int[] array = {2, 3, 1, 2, 4, 3};
-        FindDuplicates.solve(array);
+        Duplicates.solve(array);
 
         /* 4. Reservoir Sampling Problem
         / Reservoir sampling is a family of randomized algos for randomly choosing

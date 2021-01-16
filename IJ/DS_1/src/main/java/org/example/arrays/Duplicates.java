@@ -1,6 +1,6 @@
-package org.example;
+package org.example.arrays;
 
-public class FindDuplicates {
+public class Duplicates {
     public static void solve(int[] array) {
         for (int i = 0; i < array.length; ++i) {
             if (array[Math.abs(array[i])] > 0) {

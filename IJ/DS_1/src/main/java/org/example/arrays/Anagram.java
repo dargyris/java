@@ -1,8 +1,8 @@
-package org.example;
+package org.example.arrays;
 
 import java.util.Arrays;
 
-public class AnagramProblem { //Checks if two char arrays are anagrams of one another.
+public class Anagram { //Checks if two char arrays are anagrams of one another.
 
     public static boolean checkIfAnagrams(String str1, String str2) {
         char[] s1 = str1.toCharArray();
