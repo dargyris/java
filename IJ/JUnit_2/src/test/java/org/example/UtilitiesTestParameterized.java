@@ -1,6 +1,5 @@
 package org.example;
 
-import java.util.LinkedList;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -8,18 +7,21 @@ import org.junit.runners.Parameterized;
 import java.util.Arrays;
 import java.util.Collection;
 
+import static org.junit.Assert.assertEquals;
+
 @RunWith(Parameterized.class)
 public class UtilitiesTestParameterized {
     private Utilities util;
 
     private String input;
-    private String outpu;
+    private String output;
 
-    public UtilitiesTestParameterized(String input, String outpu) {
+    public UtilitiesTestParameterized(String input, String output) {
         this.input = input;
-        this.outpu = outpu;
+        this.output = output;
     }
 
+    @Parameterized.Parameters
     public static Collection<Object[]> testConditions() {
         return Arrays.asList(new Object[][]{
                 {"ABCDEFF", "ABCDEF"},
