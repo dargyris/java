@@ -1,4 +1,4 @@
-package org.example.lists;
+package org.example.Hlists;
 
 public class XLinkedList<T extends Comparable<T>> implements IList<T> {
 

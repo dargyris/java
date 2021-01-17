@@ -1,4 +1,4 @@
-package org.example.bst;
+package org.example.Hbst;
 
 public class TNode<T> {
     private T data;

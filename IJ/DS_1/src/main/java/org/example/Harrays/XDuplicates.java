@@ -1,4 +1,4 @@
-package org.example.arrays;
+package org.example.Harrays;
 
 public class XDuplicates {
     public static void solve(int[] array) {

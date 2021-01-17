@@ -1,4 +1,4 @@
-package org.example.lists;
+package org.example.Hlists;
 
 public class LNode<T extends Comparable<T>> {
     private T data;

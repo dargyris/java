@@ -1,4 +1,4 @@
-package org.example.lists;
+package org.example.Hlists;
 
 public class Person implements Comparable<Person> {
     private String name;

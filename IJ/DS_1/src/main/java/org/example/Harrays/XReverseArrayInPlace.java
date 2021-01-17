@@ -1,4 +1,4 @@
-package org.example.arrays;
+package org.example.Harrays;
 
 public class XReverseArrayInPlace {
     public static int[] reverseArray(int[] nums) {

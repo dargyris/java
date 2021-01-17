@@ -1,4 +1,4 @@
-package org.example.arrays;
+package org.example.Harrays;
 
 import java.util.Arrays;
 

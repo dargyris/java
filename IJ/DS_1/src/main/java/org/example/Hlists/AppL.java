@@ -1,4 +1,4 @@
-package org.example.lists;
+package org.example.Hlists;
 
 /* Practical applications of the List Interface
 / 1. Low level memory management: C -> malloc(), free()

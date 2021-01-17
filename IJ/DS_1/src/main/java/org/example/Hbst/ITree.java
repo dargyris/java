@@ -1,4 +1,4 @@
-package org.example.bst;
+package org.example.Hbst;
 
 public interface ITree<T> {
     void traversal();

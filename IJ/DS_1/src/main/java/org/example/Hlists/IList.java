@@ -1,4 +1,4 @@
-package org.example.lists;
+package org.example.Hlists;
 
 public interface IList<T extends Comparable<T>> {
     void insert(T data);

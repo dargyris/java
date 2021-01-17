@@ -1,4 +1,4 @@
-package org.example.lists;
+package org.example.Hlists;
 
 public class MainL {
     public static void main(String[] args) {
