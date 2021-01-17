@@ -1,6 +1,6 @@
 package org.example.arrays;
 
-public class ReverseArrayInPlace {
+public class XReverseArrayInPlace {
     public static int[] reverseArray(int[] nums) {
         //pointer to first item
         int startIndex = 0;

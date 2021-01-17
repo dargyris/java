@@ -1,6 +1,6 @@
 package org.example.arrays;
 
-public class Duplicates {
+public class XDuplicates {
     public static void solve(int[] array) {
         for (int i = 0; i < array.length; ++i) {
             if (array[Math.abs(array[i])] > 0) {

@@ -2,10 +2,10 @@ package org.example.arrays;
 
 import java.util.Random;
 
-public class ReservoirSampling {
+public class XReservoirSampling {
     private Random random;
 
-    public ReservoirSampling() {
+    public XReservoirSampling() {
         this.random = new Random();
     }
 

@@ -2,14 +2,14 @@ package org.example.arrays;
 
 import java.util.Arrays;
 
-public class Main {
+public class MainArrays {
     public static void main(String[] args) {
         /* 1. Reverse Array in Place:
         / Probably the most important interview question re. Arrays.
         / O(N)
         **/
         int[] nums = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-        System.out.println(Arrays.toString(ReverseArrayInPlace.reverseArray(nums)));
+        System.out.println(Arrays.toString(XReverseArrayInPlace.reverseArray(nums)));
 
         /* 2. Check if anagrams:
         / Checks if two input strings are anagrams of one another.
@@ -19,7 +19,7 @@ public class Main {
         **/
         String string1 = "restful";
         String string2 = "fluster";
-        System.out.println(Anagram.checkIfAnagrams(string1, string2));
+        System.out.println(XAnagram.checkIfAnagrams(string1, string2));
 
         /* 3. Find duplicates in a 1-D Array of ints when they are smaller than the
         / length of the array.
@@ -28,7 +28,7 @@ public class Main {
         / 3. Using absolute values: O(N) and in-place
         **/
         int[] array = {2, 3, 1, 2, 4, 3};
-        Duplicates.solve(array);
+        XDuplicates.solve(array);
 
         /* 4. Reservoir Sampling Problem
         / Reservoir sampling is a family of randomized algos for randomly choosing
@@ -39,7 +39,7 @@ public class Main {
         **/
         int[] numbers = {13, 65, 46, 11, 71, 50, 12, 5, 81, 97, 28, 74, 87, 68, 42, 31, 40, 37, 43, 25};
         int k = 5;
-        ReservoirSampling reservoir = new ReservoirSampling();
+        XReservoirSampling reservoir = new XReservoirSampling();
         reservoir.solve(numbers, k);
     }
 }
