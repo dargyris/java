@@ -16,7 +16,7 @@ package org.example.lists;
 / A blockchain is a linked list where blocks are cryptographically linked together.
 **/
 
-public class LApp {
+public class AppL {
     public static void main(String[] args) {
         IList<Person> list = new XLinkedList<>();
         Person adam = new Person("Adam", 10);

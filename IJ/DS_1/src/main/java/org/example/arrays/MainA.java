@@ -2,7 +2,7 @@ package org.example.arrays;
 
 import java.util.Arrays;
 
-public class MainArrays {
+public class MainA {
     public static void main(String[] args) {
         /* 1. Reverse Array in Place:
         / Probably the most important interview question re. Arrays.

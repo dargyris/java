@@ -1,6 +1,6 @@
 package org.example.lists;
 
-public class MainLists {
+public class MainL {
     public static void main(String[] args) {
         /* 1. Middle node in a linked list.
         / -> Naive solution: Iterate through the list to get the size. Traverse again to the middle node.
