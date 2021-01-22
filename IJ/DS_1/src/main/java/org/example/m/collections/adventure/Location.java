@@ -1,4 +1,4 @@
-package org.example.m.compare.adventure;
+package org.example.m.collections.adventure;
 
 import java.util.HashMap;
 import java.util.Map;
