@@ -10,5 +10,11 @@ package org.example.i.simpledesign;
 /  3. Maximize Clarity: Naming. Constants. Vars. Packages.
 /  4. Keep it Small:
 **/
+
+/* Comments
+/ 1. API Comments
+/ 2. Comments for my code: WHY. Not what.
+/ 3. Todo, Fixme etc.
+**/
 public class MainSimple {
 }

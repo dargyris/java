@@ -14,33 +14,52 @@ public class StudentHelper {
     }
 
     public String getGrade(int mark, boolean isMaths) {
-        String grade = "C";
+        int extraLimit = isMaths ? 5 : 0;
 
-        if (isGradeA(mark, isMaths))
-            grade = "A";
-        else if (isBGrade(mark, isMaths)) {
-            grade = "B";
+        if (mark >= 91 + extraLimit) {
+            return "A";
         }
-        return grade;
-    }
 
-    private boolean isGradeA(int mark, boolean isMaths) {
-        int lowerLimitForAGrade = isMaths ? 95
-                : 90;
-        return mark > lowerLimitForAGrade;
-    }
+        if (mark >= 51 + extraLimit) {
+            return "B";
+        }
 
-    private boolean isBGrade(int mark, boolean isMaths) {
-        int lowerLimitGradeB = isMaths ? 55
-                : 50;
-        return mark > lowerLimitGradeB && mark < 90;
+        return "C";
     }
 
     public String willQualifyForQuiz(int marks1, int marks2, boolean isMaths) {
-        if ((isMaths ? marks1 <= 25 : marks1 <= 20)
-                || (isMaths ? marks2 <= 25 : marks2 <= 20)) return "NO";
-        if ((isMaths ? marks1 >= 85 : marks1 >= 80)
-                || (isMaths ? marks2 >= 85 : marks2 >= 80)) return "YES";
+        if (isNotGood(marks1, isMaths) || isNotGood(marks2, isMaths)) {
+            return "NO";
+        }
+
+        if (isGood(marks1, isMaths) || isGood(marks2, isMaths)) {
+            return "YES";
+        }
+
+        return "MAYBE";
+    }
+
+    private boolean isGood(int marks, boolean isMaths) {
+        int extraLimit = isMaths ? 5 : 0;
+        return marks >= 80 + extraLimit;
+    }
+
+    private boolean isNotGood(int marks, boolean isMaths) {
+        int extraLimit = isMaths ? 5 : 0;
+        return marks <= 20 + extraLimit;
+    }
+
+    public String willQualifyForQuizMine(int marks1, int marks2, boolean isMaths) {
+        int extraPoints = isMaths ? 5 : 0;
+
+        if (marks1 <= 20 + extraPoints || marks2 <= 20 + extraPoints) {
+            return "NO";
+        }
+
+        if (marks1 >= 80 + extraPoints || marks2 >= 80 + extraPoints) {
+            return "YES";
+        }
+
         return "MAYBE";
     }
 
