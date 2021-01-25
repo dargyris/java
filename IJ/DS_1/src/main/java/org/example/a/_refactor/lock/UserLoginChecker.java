@@ -1,48 +1,72 @@
-package org.example.a._junit.lock;
+package org.example.a._refactor.lock;
 
 import java.util.Date;
 import java.util.List;
 
+    /* Conditionals that check the same condition:
+       if (conditionA) {
+            if (conditionB) { statement_B } --> Can be deleted!
+            statement_A
+        }
+
+        if (conditionB) { statement_B } --> SUPERSET of the nested if above. So the nested one can be deleted.
+    */
+
+/*  Shuffling if statements up and down
+    if a nested return, matches another return outside, the nested if can be simplified!
+**/
+
+/*  Redundant if statements:
+    main() {
+        if (statement_A) {
+            if (statement_B) {
+                return b;
+            }
+            return a; <-- REDUNDANT!
+        }
+        return a;
+**/
+
 public class UserLoginChecker {
 
-    public Lock isUserAllowedToLogin(long id, String status, boolean firstScreen, User user, List list) {
-        Date time = new Date();
-        Lock lck = new Lock();
-        if (list.size() > 0 && list.get(0) != null) {
-            Object[] object = (Object[]) list.get(0);
-            String userId = (String) object[0];
-            Date lockTimestamp = (Date) object[1];
-            if (userId != null) {
-                // message which is shown to the user
-                String lockMsg = Constants.LOCK_TEXT.replaceAll("@@USER@@",
-                        userId);
-                //if userID is present, the Lock time stamp will also be present
-                //4800000 milliseconds equals to 1 1/2 hours.
-                if (time.getTime() - lockTimestamp.getTime() > 3600000) {
-                    //New user gets lock only on first screen
-                    //If 1 1/2 hours expires when user is not on 1st screen then for same user lock can be refreshed.
-                    if (firstScreen
-                            || userId.equalsIgnoreCase(user.getUserId())) {
-                        //to set the  access to write mode
-                        lck.setRead(false);
-                        return lck;
-                    }
-                    lck.setRead(true);
-                    //Only read access is permitted to other user
-                    lck.setLockReason(lockMsg);
-                    return lck;
-                } else if (userId.equalsIgnoreCase(user.getUserId())) {
-                    // Locked By Same User, Write access
-                    lck.setRead(false);
-                    return lck;
-                } else {
-                    lck.setRead(true);
-                    //Only Read Access is Permitted
-                    lck.setLockReason(lockMsg);
-                    return lck;
-                }
-            }
+    public static final int MAX_WAIT_TIME_IN_MS = 60 * 60 * 1000;
+
+    public Lock isUserAllowedToLogin(long id, String status, boolean isFirstScreen, User userTryingToLogin, List lockList) {
+
+        if (lockList.size() <= 0 || lockList.get(0) == null) {
+            return writeLock();
         }
+
+        Object[] existingLock = (Object[]) lockList.get(0);
+        String userIdWithLock = (String) existingLock[0];
+        Date lockTimestamp = (Date) existingLock[1];
+
+        if (userIdWithLock == null) {
+            return writeLock();
+        }
+
+        if (userIdWithLock.equalsIgnoreCase(userTryingToLogin.getUserId())) {
+            return writeLock();
+        }
+
+        long timeElapsedSinceLock = new Date().getTime() - lockTimestamp.getTime();
+        if (timeElapsedSinceLock > MAX_WAIT_TIME_IN_MS && isFirstScreen) {
+            return writeLock();
+        }
+
+        return readLockWithMessage(userIdWithLock);
+    }
+
+    private Lock readLockWithMessage(String userIdWithLock) {
+        String lockMsg = Constants.LOCK_TEXT.replaceAll("@@USER@@", userIdWithLock);
+        Lock lck = new Lock();
+        lck.setRead(true);
+        lck.setLockReason(lockMsg);
+        return lck;
+    }
+
+    private Lock writeLock() {
+        Lock lck = new Lock();
         lck.setRead(false);
         return lck;
     }

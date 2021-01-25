@@ -1,4 +1,4 @@
-package org.example.a._junit.lock;
+package org.example.a._refactor.lock;
 
 import java.util.Date;
 import java.util.List;
