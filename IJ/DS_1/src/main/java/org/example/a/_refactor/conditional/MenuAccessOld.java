@@ -1,4 +1,4 @@
-package org.example.agnar.menu;
+package org.example.a._refactor.conditional;
 
 import org.example.agnar.goodprogrammer.Constants;
 

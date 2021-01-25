@@ -1,4 +1,4 @@
-package org.example.agnar.menu;
+package org.example.a._refactor.conditional;
 
 /* 10 Tips to good programming
 /  1. Pair programming: Form a team. With people.
