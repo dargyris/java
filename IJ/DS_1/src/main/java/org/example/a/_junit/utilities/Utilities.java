@@ -1,4 +1,4 @@
-package org.example.a._junit;
+package org.example.a._junit.utilities;
 
 public class Utilities {
     public static char[] getEveryNthChar(String str, int n) {

@@ -1,4 +1,4 @@
-package org.example.a._junit;
+package org.example.a._junit.utilities;
 
 
 import org.junit.Test;
@@ -37,6 +37,7 @@ public class UtilitiesTest {
         assertEquals(300, Utilities.converter(10, 5));
     }
 
+    //import org.junit.Test; --> version 4.12
     @Test(expected = ArithmeticException.class)
     public void converterThrowsArithmeticExceptionWhenBValueIs0() throws Exception {
         int actual = Utilities.converter(10, 0);

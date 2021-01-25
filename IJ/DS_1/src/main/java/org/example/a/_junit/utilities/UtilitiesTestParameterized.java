@@ -1,4 +1,4 @@
-package org.example.a._junit;
+package org.example.a._junit.utilities;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
