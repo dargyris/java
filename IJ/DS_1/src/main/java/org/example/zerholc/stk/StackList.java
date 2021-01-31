@@ -1,6 +1,9 @@
-package org.example.zerholc.stk.list;
+package org.example.zerholc.stk;
 
-public class StackList<T extends Comparable<T>> {
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
+public class StackList<T extends Comparable<T>> implements MyStack<T>, Iterable<T> {
     private Node<T> head;
     private int size;
 
@@ -37,6 +40,37 @@ public class StackList<T extends Comparable<T>> {
         public void setNext(Node<T> next) {
             this.next = next;
         }
+    }
+
+    class IteratorHelper implements Iterator<T> {
+        private Node<T> current;
+
+        public IteratorHelper() {
+            current = head;
+        }
+
+        @Override
+        public boolean hasNext() {
+            try {
+                return current != null;
+            } catch (NullPointerException e) {
+                return false;
+            }
+        }
+
+        @Override
+        public T next() {
+            if (!hasNext()) {
+                throw new NoSuchElementException();
+            }
+            T obj = current.getData();
+            current = current.getNext();
+            return obj;
+        }
+    }
+
+    public Iterator<T> iterator() {
+        return new IteratorHelper();
     }
 
     public boolean push(T obj) {

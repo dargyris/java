@@ -1,13 +1,13 @@
-package org.example.zerholc.stk;
+package org.example.zerholc.que;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class StackList<T extends Comparable<T>> implements MyStack<T>, Iterable<T> {
+public class QueueList<T extends Comparable<T>> implements MyQueue<T>, Iterable<T> {
     private Node<T> head;
     private int size;
 
-    public StackList() {
+    public QueueList() {
         head = null;
         size = 0;
     }
@@ -73,19 +73,6 @@ public class StackList<T extends Comparable<T>> implements MyStack<T>, Iterable<
         return new IteratorHelper();
     }
 
-    public boolean push(T obj) {
-        size++;
-        if (head == null) {
-            head = new Node<>(obj);
-            return true;
-        }
-
-        Node<T> current = head;
-        head = new Node<>(obj);
-        head.setNext(current);
-        return true;
-    }
-
     public int size() {
         return size;
     }
@@ -94,19 +81,41 @@ public class StackList<T extends Comparable<T>> implements MyStack<T>, Iterable<
         return head == null;
     }
 
-    public T peek() {
-        return head.getData();
+    public boolean enqueue(T obj) {
+        Node<T> node = new Node<>(obj);
+        node.next = head;
+        head = node;
+        size++;
+        return true;
     }
 
-    public T pop() {
+    public T peek() {
+        Node<T> current = head;
+        while (current.getNext() != null) {
+            current = current.getNext();
+        }
+        return current.getData();
+    }
+
+    public T dequeue() {
         if (head == null) {
             return null;
         }
-
-        T obj = head.getData();
-        head = head.getNext();
+        if (head.next == null) {
+            T obj = head.getData();
+            head = null;
+            size--;
+            return obj;
+        }
+        Node<T> current = head;
+        Node<T> prev = null;
+        while (current.getNext() != null) {
+            prev = current;
+            current = current.getNext();
+        }
+        T obj = current.getData();
+        prev.next = null;
         size--;
         return obj;
     }
-
 }

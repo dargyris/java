@@ -1,8 +1,9 @@
-package org.example.zerholc.stk.arrayFirst;
+package org.example.zerholc.stk;
 
+import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class ArrayFirst<T> {
+public class ArrayFirst<T> implements MyStack<T>, Iterable<T> {
     private T[] array;
     private int size;
 
@@ -14,6 +15,36 @@ public class ArrayFirst<T> {
     public ArrayFirst(int capacity) {
         array = capacity <= 10 ? (T[]) new Object[10] : (T[]) new Object[capacity];
         size = 0;
+    }
+
+    class IteratorHelper implements Iterator<T> {
+        private int index;
+
+        public IteratorHelper() {
+            index = 0;
+        }
+
+        @Override
+        public boolean hasNext() {
+            try {
+                return index < size();
+            } catch (NullPointerException e) {
+                return false;
+            }
+        }
+
+        @Override
+        public T next() {
+            if (!hasNext()) {
+                throw new NoSuchElementException();
+            }
+            return array[index++];
+        }
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new IteratorHelper();
     }
 
     private boolean arrayDouble() {
@@ -36,14 +67,17 @@ public class ArrayFirst<T> {
         return false;
     }
 
+    @Override
     public int size() {
         return size;
     }
 
+    @Override
     public boolean isEmpty() {
         return size == 0;
     }
 
+    @Override
     public boolean push(T obj) {
         int index = size();
         while (index >= 0) {
@@ -56,7 +90,7 @@ public class ArrayFirst<T> {
         return true;
     }
 
-
+    @Override
     public T peek() {
         try {
             return array[0];
@@ -65,6 +99,7 @@ public class ArrayFirst<T> {
         }
     }
 
+    @Override
     public T pop() {
         try {
             int index = 0;
@@ -73,7 +108,9 @@ public class ArrayFirst<T> {
                 array[index] = array[index + 1];
                 index++;
             }
-            arrayReduce();
+            if (size >= 10) {
+                arrayReduce();
+            }
             size--;
             return obj;
         } catch (NullPointerException e) {

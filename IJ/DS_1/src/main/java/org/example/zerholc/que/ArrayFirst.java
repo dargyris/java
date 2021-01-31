@@ -1,4 +1,6 @@
-package org.example.zerholc.stk;
+package org.example.zerholc.que;
+
+import org.example.zerholc.stk.MyStack;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
