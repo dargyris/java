@@ -1,11 +1,11 @@
 package org.example.zerholc.bst;
 
-public class TNode<T> {
+class TreeNode<T> {
     private T data;
-    private TNode<T> left;
-    private TNode<T> right;
+    private TreeNode<T> left;
+    private TreeNode<T> right;
 
-    public TNode(T data) {
+    public TreeNode(T data) {
         this.data = data;
         this.left = null;
         this.right = null;
@@ -24,19 +24,19 @@ public class TNode<T> {
         this.data = data;
     }
 
-    public TNode<T> getLeft() {
+    public TreeNode<T> getLeft() {
         return left;
     }
 
-    public void setLeft(TNode<T> left) {
+    public void setLeft(TreeNode<T> left) {
         this.left = left;
     }
 
-    public TNode<T> getRight() {
+    public TreeNode<T> getRight() {
         return right;
     }
 
-    public void setRight(TNode<T> right) {
+    public void setRight(TreeNode<T> right) {
         this.right = right;
     }
 }

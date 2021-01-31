@@ -1,9 +1,9 @@
 package org.example.zerholc.bst;
 
 public interface ITree<T> {
-    void traversal();
+    void inOrderTraversal();
     void insert(T data);
     void delete(T data);
-    T getMax();
-    T getMin();
+    T getMaxValue();
+    T getMinValue();
 }
