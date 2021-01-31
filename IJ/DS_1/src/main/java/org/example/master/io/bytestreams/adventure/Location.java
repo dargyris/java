@@ -1,4 +1,4 @@
-package org.example.master.io.adventure.bytestreams;
+package org.example.master.io.bytestreams.adventure;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

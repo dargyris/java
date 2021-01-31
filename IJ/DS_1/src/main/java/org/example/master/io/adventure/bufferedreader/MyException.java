@@ -1,4 +1,4 @@
-package org.example.master.io.adventure.fin;
+package org.example.master.io.adventure.bufferedreader;
 
 import java.io.IOException;
 

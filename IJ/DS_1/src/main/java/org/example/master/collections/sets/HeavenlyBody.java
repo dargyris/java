@@ -27,7 +27,25 @@ public final class HeavenlyBody {
     }
 
     public boolean addMoon(HeavenlyBody moon) {
-        return this.satellites.add(moon);
+        return satellites.add(moon);
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+
+        if (obj == null || obj.getClass() != this.getClass()) {
+            return false;
+        }
+
+        String objName = ((HeavenlyBody) obj).getName();
+        return this.name.equals(objName);
+    }
+
+    @Override
+    public int hashCode() {
+        return this.name.hashCode() + 57;
+    }
 }

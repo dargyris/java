@@ -1,42 +1,67 @@
-package org.example.master.io.adventure.bytestreams;
+package org.example.master.io.bytestreams.adventure;
 
 import java.io.*;
-import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.Collection;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Set;
 
 public class Locations implements Map<Integer, Location> {
     private static Map<Integer, Location> locations = new LinkedHashMap<>();
 
+//    static {
+//        try (BufferedReader locFile = new BufferedReader(new FileReader("locations_written.txt"))) {
+//            String input;
+//            String regExp = "^(\\d{1,3})(.)(.*)";
+//            Pattern pattern = Pattern.compile(regExp);
+//            while ((input = locFile.readLine()) != null) {
+//                Matcher matcher = pattern.matcher(input);
+//                matcher.find();
+//                int loc = Integer.parseInt(matcher.group(1));
+//                String description = matcher.group(3);
+//                locations.put(loc, new Location(loc, description, new HashMap<>()));
+//            }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//
+//        try (BufferedReader dirFile = new BufferedReader(new FileReader("directions_written.txt"))) {
+//            String input;
+//            String regExp = "^(\\d{1,3})(.)(.*)(\\,)(\\d{1,3})";
+//            Pattern pattern = Pattern.compile(regExp);
+//            while ((input = dirFile.readLine()) != null) {
+//                Matcher matcher = pattern.matcher(input);
+//                matcher.find();
+//
+//                int loc = Integer.parseInt(matcher.group(1));
+//                String direction = matcher.group(3);
+//                int destination = Integer.parseInt(matcher.group(5));
+//                locations.get(loc).addExit(direction, destination);
+//            }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//
+//    }
+
     static {
-        try (BufferedReader locFile = new BufferedReader(new FileReader("locations_written.txt"))) {
-            String input;
-            String regExp = "^(\\d{1,3})(.)(.*)";
-            Pattern pattern = Pattern.compile(regExp);
-            while ((input = locFile.readLine()) != null) {
-                Matcher matcher = pattern.matcher(input);
-                matcher.find();
-                int loc = Integer.parseInt(matcher.group(1));
-                String description = matcher.group(3);
-                locations.put(loc, new Location(loc, description, new HashMap<>()));
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        try (BufferedReader dirFile = new BufferedReader(new FileReader("directions_written.txt"))) {
-            String input;
-            String regExp = "^(\\d{1,3})(.)(.*)(\\,)(\\d{1,3})";
-            Pattern pattern = Pattern.compile(regExp);
-            while ((input = dirFile.readLine()) != null) {
-                Matcher matcher = pattern.matcher(input);
-                matcher.find();
-
-                int loc = Integer.parseInt(matcher.group(1));
-                String direction = matcher.group(3);
-                int destination = Integer.parseInt(matcher.group(5));
-                Location location = locations.get(loc);
-                location.addExit(direction, destination);
+        try (DataInputStream locFile = new DataInputStream(new BufferedInputStream(new FileInputStream("locations.dat")))) {
+            boolean eof = false;
+            while (!eof) {
+                Map<String, Integer> exits = new LinkedHashMap<>();
+                try {
+                    int loc = locFile.readInt();
+                    String description = locFile.readUTF();
+                    int numExits = locFile.readInt();
+                    for (int i = 0; i < numExits; i++) {
+                        String direction = locFile.readUTF();
+                        int destination = locFile.readInt();
+                        exits.put(direction, destination);
+                    }
+                    locations.put(loc, new Location(loc, description, exits));
+                } catch (EOFException e) {
+                    eof = true;
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -44,17 +69,15 @@ public class Locations implements Map<Integer, Location> {
     }
 
     public static void main(String[] args) throws IOException {
-        try (DataOutputStream locFile = new DataOutputStream(new BufferedOutputStream(new FileOutputStream("locations_written.dat")));
-             DataOutputStream dirFile = new DataOutputStream(new BufferedOutputStream(new FileOutputStream("directions_written.dat")))
-        ) {
+        try (DataOutputStream locFile = new DataOutputStream(new BufferedOutputStream(new FileOutputStream("locations.dat")))) {
             for (Location location : locations.values()) {
                 locFile.writeInt(location.getLocationID());
                 locFile.writeUTF(location.getDescription());
                 locFile.writeInt(location.getExits().size() - 1);
                 for (String direction : location.getExits().keySet()) {
                     if (!direction.equalsIgnoreCase("Q")) {
-                        dirFile.writeUTF(direction);
-                        dirFile.writeInt(location.getExits().get(direction));
+                        locFile.writeUTF(direction);
+                        locFile.writeInt(location.getExits().get(direction));
                     }
                 }
             }

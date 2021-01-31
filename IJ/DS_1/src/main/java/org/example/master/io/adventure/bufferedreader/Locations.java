@@ -1,22 +1,21 @@
-package org.example.master.io.adventure.fin;
+package org.example.master.io.adventure.bufferedreader;
 
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Locations implements Map<Integer, Location> {
-    private static Map<Integer, Location> locations = new HashMap<>();
+    private static Map<Integer, Location> locations = new LinkedHashMap<>();
 
     static {
-        try (Scanner input = new Scanner(new FileReader("locations.txt"))) {
+        try (BufferedReader locFile = new BufferedReader(new FileReader("locations_written.txt"))) {
+            String input;
             String regExp = "^(\\d{1,3})(.)(.*)";
             Pattern pattern = Pattern.compile(regExp);
-            while (input.hasNextLine()) {
-                Matcher matcher = pattern.matcher(input.nextLine());
+            while ((input = locFile.readLine()) != null) {
+                Matcher matcher = pattern.matcher(input);
                 matcher.find();
-
                 int loc = Integer.parseInt(matcher.group(1));
                 String description = matcher.group(3);
                 locations.put(loc, new Location(loc, description, new HashMap<>()));
@@ -44,18 +43,18 @@ public class Locations implements Map<Integer, Location> {
 //            }
 //        }
 
-        try (Scanner input = new Scanner(new FileReader("directions.txt"))) {
+        try (BufferedReader dirFile = new BufferedReader(new FileReader("directions_written.txt"))) {
+            String input;
             String regExp = "^(\\d{1,3})(.)(.*)(\\,)(\\d{1,3})";
             Pattern pattern = Pattern.compile(regExp);
-            while (input.hasNextLine()) {
-                Matcher matcher = pattern.matcher(input.nextLine());
+            while ((input = dirFile.readLine()) != null) {
+                Matcher matcher = pattern.matcher(input);
                 matcher.find();
 
                 int loc = Integer.parseInt(matcher.group(1));
                 String direction = matcher.group(3);
                 int destination = Integer.parseInt(matcher.group(5));
-                Location location = locations.get(loc);
-                location.addExit(direction, destination);
+                locations.get(loc).addExit(direction, destination);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -85,16 +84,34 @@ public class Locations implements Map<Integer, Location> {
     }
 
     public static void main(String[] args) throws IOException {
-//        try (FileWriter locFile = new FileWriter("locations.txt");
-//             FileWriter dirFile = new FileWriter("directions.txt")
-//        ) {
-//            for (Location location : locations.values()) {
-//                locFile.write(location.getLocationID() + "." + location.getDescription() + "\n");
-//                for (String direction : location.getExits().keySet()) {
-//                    dirFile.write(location.getLocationID() + "." + direction + "." + location.getExits().get(direction) + "\n");
-//                }
-//            }
-//        }
+        try (BufferedWriter locFile = new BufferedWriter(new FileWriter("locations_written.txt"));
+             BufferedWriter dirFile = new BufferedWriter(new FileWriter("directions_written.txt"))
+        ) {
+            for (Location location : locations.values()) {
+                locFile.write(location.getLocationID() + "," + location.getDescription() + "\n");
+                for (String direction : location.getExits().keySet()) {
+                    if (!direction.equalsIgnoreCase("Q")) {
+                        dirFile.write(location.getLocationID() + "," + direction + "," + location.getExits().get(direction) + "\n");
+                    }
+                }
+            }
+        }
+
+        try (DataOutputStream locFile = new DataOutputStream(new BufferedOutputStream(new FileOutputStream("locations_written.dat")));
+             DataOutputStream dirFile = new DataOutputStream(new BufferedOutputStream(new FileOutputStream("directions_written.dat")))
+        ) {
+            for (Location location : locations.values()) {
+                locFile.writeInt(location.getLocationID());
+                locFile.writeUTF(location.getDescription());
+                locFile.writeInt(location.getExits().size() - 1);
+                for (String direction : location.getExits().keySet()) {
+                    if (!direction.equalsIgnoreCase("Q")) {
+                        dirFile.writeUTF(direction);
+                        dirFile.writeInt(location.getExits().get(direction));
+                    }
+                }
+            }
+        }
     }
 
     @Override

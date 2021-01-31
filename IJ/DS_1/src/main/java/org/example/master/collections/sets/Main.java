@@ -90,7 +90,18 @@ public class Main {
         }
         System.out.println("All moons:");
         for (HeavenlyBody moon : moons) {
-            System.out.println("\t** " + moon.getName());
+            System.out.println("\t* " + moon.getName());
         }
+
+        HeavenlyBody pluto = new HeavenlyBody("Pluto", 842);
+        planets.add(pluto);
+
+        for (HeavenlyBody planet : planets) {
+            System.out.println(planet.getName() + ": " + planet.getOrbitalPeriod());
+        }
+
+//        Object o = new Object();
+//        o.equals(o);
+//        "pluto".equals("");
     }
 }

@@ -1,2 +1,7 @@
-package org.example.master.collections.sets.challenge;public class Moon {
+package org.example.master.collections.sets.challenge;
+
+public class Moon extends HeavenlyBody {
+    public Moon(String name, double orbitalPeriod) {
+        super(name, orbitalPeriod, BodyTypes.MOON);
+    }
 }

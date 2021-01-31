@@ -1,4 +1,4 @@
-package org.example.master.collections.sets;
+package org.example.master.collections.sets.equals_hashcode;
 
 public class Dog {
     private final String name;
@@ -12,7 +12,7 @@ public class Dog {
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public final boolean equals(Object obj) {
         if (this == obj) {
             return true;
         }

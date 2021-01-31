@@ -1,4 +1,4 @@
-package org.example.master.io.bytestreams.adventure;
+package org.example.master.io.serialization;
 
 import java.io.IOException;
 
