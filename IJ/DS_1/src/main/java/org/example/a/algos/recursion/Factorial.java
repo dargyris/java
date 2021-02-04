@@ -1,4 +1,4 @@
-package org.example.a.algos.basic;
+package org.example.a.algos.recursion;
 
 import java.util.Stack;
 

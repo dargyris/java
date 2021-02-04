@@ -1,5 +1,21 @@
 package org.example.a.ds.lists;
 
+/* Practical applications of the List Interface
+/ 1. Low level memory management: C -> malloc(), free()
+/ for allocating or freeing memory on the heap.
+/ char* char_ptr = (char*) malloc(30);
+/ https://wiki.syslinux.org/wiki/index.php?title=Memory_Map_(General)
+
+/ 2. The heap memory is represented as a doubly linked list.
+
+/ 3. Windows: Alt-Tab: Active tabs layout
+
+/ 4. Photo viewer: Next / Previous photo
+
+/ 5. Blockchains (BitCoin)
+/ A blockchain is a linked list where blocks are cryptographically linked together.
+**/
+
 public class Main {
     public static void main(String[] args) {
         arrayListNoSize();
