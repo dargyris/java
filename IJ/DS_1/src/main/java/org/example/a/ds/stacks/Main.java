@@ -12,8 +12,47 @@ public class Main {
         listStack();
         arrayFirstStack();
         arrayLastStack();
+        mathExpressionProcess();
+        maxItemInStack();
+        queueWithStacks();
+        queueWithOneStack();
+    }
 
-        ShuntingYard yard = new ShuntingYard();
+    public static void queueWithOneStack() {
+        Questions.QueueWithOneStack queueWithOneStack = new Questions().new QueueWithOneStack();
+        queueWithOneStack.enqueue(10);
+        queueWithOneStack.enqueue(5);
+        queueWithOneStack.enqueue(20);
+        System.out.print(queueWithOneStack.dequeue() + " ");
+        queueWithOneStack.enqueue(100);
+        System.out.print(queueWithOneStack.dequeue() + " ");
+        System.out.print(queueWithOneStack.dequeue() + " ");
+        System.out.print(queueWithOneStack.dequeue() + "\n");
+    }
+
+    public static void queueWithStacks() {
+        Questions.QueueWithStacks queueWithStacks = new Questions().new QueueWithStacks();
+        queueWithStacks.enqueue(10);
+        queueWithStacks.enqueue(5);
+        queueWithStacks.enqueue(20);
+        System.out.print(queueWithStacks.dequeue() + " ");
+        queueWithStacks.enqueue(100);
+        System.out.print(queueWithStacks.dequeue() + " ");
+        System.out.print(queueWithStacks.dequeue() + " ");
+        System.out.print(queueWithStacks.dequeue() + "\n");
+    }
+
+    public static void maxItemInStack() {
+        Questions.MaxItemStack maxStackProblem = new Questions().new MaxItemStack();
+        maxStackProblem.push(10);
+        maxStackProblem.push(8);
+        maxStackProblem.push(23);
+        maxStackProblem.push(1);
+        System.out.println(maxStackProblem.getMaxItem());
+    }
+
+    public static void mathExpressionProcess() {
+        Questions.ShuntingYard yard = new Questions().new ShuntingYard();
         yard.interpretExpression("( ( 4 - 1 ) * ( 2 + 1 ) ) / ( 2 + 1 )");
         System.out.println(yard.result());
     }
