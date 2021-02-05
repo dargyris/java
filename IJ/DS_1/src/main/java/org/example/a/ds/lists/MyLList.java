@@ -3,10 +3,10 @@ package org.example.a.ds.lists;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class MyLinkedList<T extends Comparable<T>> implements MyList<T>, Iterable<T> {
+public class MyLList<T extends Comparable<T>> implements MyList<T>, Iterable<T> {
     private ListNode<T> head;
 
-    public MyLinkedList() {
+    public MyLList() {
         head = null;
     }
 
@@ -16,6 +16,7 @@ public class MyLinkedList<T extends Comparable<T>> implements MyList<T>, Iterabl
 
         public ListNode(T data) {
             this.data = data;
+            next = null;
         }
 
         @Override
@@ -176,14 +177,11 @@ public class MyLinkedList<T extends Comparable<T>> implements MyList<T>, Iterabl
 
     @Override
     public T remove(int position) {
-        if (position < 0 || position > size()) {
+        if (position < 0 || position >= size()) {
             return null;
         }
         if (position == 0) {
             return removeFirst();
-        }
-        if (position == size()) {
-            return removeLast();
         }
         ListNode<T> current = head;
         ListNode<T> prev = null;
@@ -258,7 +256,7 @@ public class MyLinkedList<T extends Comparable<T>> implements MyList<T>, Iterabl
 
     @Override
     public T get(int position) {
-        if (position < 0 || position > size()) {
+        if (position < 0 || position >= size()) {
             return null;
         }
         if (head == null) {

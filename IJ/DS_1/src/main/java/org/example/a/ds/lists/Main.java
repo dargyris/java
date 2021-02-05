@@ -16,16 +16,51 @@ package org.example.a.ds.lists;
 / A blockchain is a linked list where blocks are cryptographically linked together.
 **/
 
+import java.util.ListIterator;
+
 public class Main {
     public static void main(String[] args) {
-        arrayListNoSize();
-        arrayListSize();
-        linkedList();
+        aList();
+        aListSize();
+        llist();
+        llistSize();
+        llistTailSize();
+        doublyLlist();
+        getMiddleElement();
+        reverseList();
     }
 
-    public static void arrayListNoSize() {
+    public static void reverseList() {
+        System.out.println("Reverse elements in list:");
+        MyLListSize<Integer> intList = new MyLListSize<>();
+        intList.addFirst(1);
+        intList.addFirst(2);
+        intList.addFirst(3);
+        intList.addFirst(4);
+        intList.addFirst(5);
+        printIntList(intList);
+        Questions.ReverseList reverse = new Questions().new ReverseList();
+        reverse.reverseList(intList);
+        printIntList(intList);
+        System.out.println("=====================================\n");
+    }
+
+    public static void getMiddleElement() {
+        System.out.println("Middle element of list:");
+        MyLListSize<Integer> intList = new MyLListSize<>();
+        intList.addFirst(1);
+        intList.addFirst(2);
+        intList.addFirst(3);
+        intList.addFirst(4);
+        intList.addFirst(5);
+        printIntList(intList);
+        Questions.MiddleElement middle = new Questions().new MiddleElement();
+        System.out.println(middle.getMiddleElement(intList));
+        System.out.println("=====================================\n");
+    }
+    public static void aList() {
         System.out.println("ArrayList no size:");
-        MyList<String> stringList = new MyArrayList<>();
+        MyList<String> stringList = new MyAList<>();
         System.out.println("List initial size: " + stringList.size());
         loadList(stringList);
         System.out.println("List size after adding 6 elements: " + stringList.size());
@@ -37,9 +72,9 @@ public class Main {
         System.out.println("=====================================\n");
     }
 
-    public static void arrayListSize() {
+    public static void aListSize() {
         System.out.println("ArrayList with size:");
-        MyList<String> stringList = new MyArrayListSize<>();
+        MyList<String> stringList = new MyAListSize<>();
         System.out.println("List initial size: " + stringList.size());
         loadList(stringList);
         System.out.println("List size after adding 6 elements: " + stringList.size());
@@ -51,9 +86,9 @@ public class Main {
         System.out.println("=====================================\n");
     }
 
-    public static void linkedList() {
-        System.out.println("LinkedList:");
-        MyList<String> stringList = new MyLinkedList<>();
+    public static void llist() {
+        System.out.println("Linked List without Size:");
+        MyList<String> stringList = new MyLList<>();
         System.out.println("List initial size: " + stringList.size());
         loadList(stringList);
         System.out.println("List size after adding 6 elements: " + stringList.size());
@@ -62,6 +97,57 @@ public class Main {
         printListWhile(stringList);
         printListForeach(stringList);
         printListLambda(stringList);
+        System.out.println("=====================================\n");
+    }
+
+    public static void llistSize() {
+        System.out.println("Linked List with Size:");
+        MyList<String> stringList = new MyLListSize<>();
+        System.out.println("List initial size: " + stringList.size());
+        loadList(stringList);
+        System.out.println("List size after adding 6 elements: " + stringList.size());
+        System.out.println("Peek first: " + stringList.peekFirst());
+        System.out.println("Peek last: " + stringList.peekLast());
+        printListWhile(stringList);
+        printListForeach(stringList);
+        printListLambda(stringList);
+        System.out.println("=====================================\n");
+    }
+
+    public static void llistTailSize() {
+        System.out.println("Linked List with Tail and Size:");
+        MyList<String> stringList = new MyLListTail<>();
+        System.out.println("List initial size: " + stringList.size());
+        loadList(stringList);
+        System.out.println("List size after adding 6 elements: " + stringList.size());
+        System.out.println("Peek first: " + stringList.peekFirst());
+        System.out.println("Peek last: " + stringList.peekLast());
+        printListWhile(stringList);
+        printListForeach(stringList);
+        printListLambda(stringList);
+        System.out.println("=====================================\n");
+    }
+
+    public static void doublyLlist() {
+        System.out.println("Doubly Linked List with Tail and Size:");
+        MyList<String> stringList = new MyLListD<>();
+        System.out.println("List initial size: " + stringList.size());
+        loadList(stringList);
+        System.out.println("List size after adding 6 elements: " + stringList.size());
+        System.out.println("Peek first: " + stringList.peekFirst());
+        System.out.println("Peek last: " + stringList.peekLast());
+        printListWhile(stringList);
+        printListForeach(stringList);
+        printListLambda(stringList);
+        ListIterator<String> iterator = (ListIterator<String>) stringList.iterator();
+        System.out.println(iterator.next());
+        System.out.println(iterator.next());
+        System.out.println(iterator.previous());
+        System.out.println(iterator.previous());
+        System.out.println(iterator.previousIndex());
+        System.out.println(iterator.nextIndex());
+        System.out.println(iterator.nextIndex());
+        System.out.println(iterator.previousIndex());
         System.out.println("=====================================\n");
     }
 
@@ -91,6 +177,12 @@ public class Main {
     }
 
     public static void printListLambda(MyList<String> list) {
+        System.out.print("Lambda\t: | ");
+        list.forEach(element -> System.out.print(element + " | "));
+        System.out.print("\n");
+    }
+
+    public static void printIntList(MyList<Integer> list) {
         System.out.print("Lambda\t: | ");
         list.forEach(element -> System.out.print(element + " | "));
         System.out.print("\n");
