@@ -99,6 +99,9 @@ public class ListStack<T extends Comparable<T>> implements MyStack<T>, Iterable<
 
     @Override
     public T peek() {
+        if (head == null) {
+            return null;
+        }
         return head.getData();
     }
 

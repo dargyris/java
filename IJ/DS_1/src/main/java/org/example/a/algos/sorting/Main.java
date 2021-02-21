@@ -79,5 +79,6 @@ public class Main {
         System.out.println("Logic: Uses a decreasing gap.");
         System.out.println("The elements are checked one-by-one only once at the last iteration.");
         System.out.println("h-sorted arrays: When every h-th element is sorted.");
+        System.out.println("=================================================================\n");
     }
 }

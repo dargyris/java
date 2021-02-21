@@ -137,7 +137,8 @@ public class MyLListD<T extends Comparable<T>> implements MyList<T>, Iterable<T>
                     current.next.prev = prev;
                     current.next = current.prev = null;
                     size--;
-                }            }
+                }
+            }
         }
 
         @Override
@@ -171,7 +172,8 @@ public class MyLListD<T extends Comparable<T>> implements MyList<T>, Iterable<T>
                 current = current.next;
                 if (((Comparable<T>) editedData).compareTo(current.getData()) == 0) {
                     current.setData(obj);
-                }}
+                }
+            }
         }
 
         @Override

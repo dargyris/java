@@ -1,2 +1,4 @@
-package org.example.b.ds.bst;public class Main {
+package org.example.b.ds.bst;
+
+public class Main {
 }
